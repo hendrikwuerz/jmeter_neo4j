@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.UUID;
 
 /**
  * Created by hendrik on 20.05.15.
@@ -19,9 +18,16 @@ public class DataGenerator {
     static final String CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static final String NUMBERS = "0123456789";
 
-    public static void main(String[] args) throws FileNotFoundException {
-        //generatePeople("/home/hendrik/dev/pooling-people/JMeter/Neo4j/random_users_java.csv", 100000);
-        generateTasks("/home/hendrik/dev/pooling-people/JMeter/Neo4j/random_tasks_java.csv", 100000);
+    static final String folder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/random_";
+    static final String filePeople = folder + "users.csv";
+    static final String fileTasks = folder + "tasks.csv";
+    static final String fileWorkspaces = folder + "workspaces.csv";
+    static final String fileWorkspaceItems = folder + "workspaceItems.csv";
+
+    public static void main(String[] args) throws IOException {
+        generatePeople(filePeople, 500);
+        generateTasks(fileTasks, 500);
+        generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
 
         /*
         if(args.length < 1) return;
@@ -43,22 +49,29 @@ public class DataGenerator {
     public static void generateTasks(String filename, int amount) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder( 90 * amount );
         for(int i = 0; i < amount; i++) {
-            long now1 = System.currentTimeMillis() - (long)(Math.random() * 1000000000);
-            long now2 = now1 + (long)(Math.random() * 1000);
-            String title = "My task title " + i;
-            String type = "task";
-            String uuid = UUID.randomUUID().toString();
-
-            sb.append(now1).append(",");
-            sb.append(now2).append(",");
-            sb.append(title).append(",");
-            sb.append(type).append(",");
-            sb.append(uuid).append(System.lineSeparator());
+            sb.append(new Task(i));
         }
 
         PrintWriter out = new PrintWriter(filename);
         out.print(sb);
         out.close();
+    }
+
+
+    /**
+     * returns a list of Tasks based on the csv file passed as argument
+     *
+     * @param filename
+     *          The path of the csv file with the tasks
+     * @return
+     *          a list of Tasks based on the csv file
+     * @throws IOException
+     *          if reading file is not possible
+     */
+    private static Collection<Task> getCurrentTasks(String filename) throws IOException {
+        LinkedList<Task> list = new LinkedList<Task>();
+        Files.lines(new File(filename).toPath()).forEach( line -> list.add(new Task(line)));
+        return list;
     }
 
 
@@ -74,13 +87,14 @@ public class DataGenerator {
     public static void generatePeople(String filename, int amount) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder( 150 * amount );
         for(int i = 0; i < amount; i++) {
-            sb.append(new Person(i).toString()).append(System.lineSeparator());
+            sb.append(new Person(i));
         }
         PrintWriter out = new PrintWriter(filename);
         out.print(sb);
         out.close();
 
     }
+
 
     /**
      * returns a list of Persons based on the csv file passed as argument
@@ -99,8 +113,39 @@ public class DataGenerator {
     }
 
 
-    public static void generateTestGetWorkspaceItems(String filename, int amount, String peopleFile) throws FileNotFoundException {
+    /**
+     * generates the file for all workspaces and for all workspace items.
+     * There will be as many workspaces as people exists in the passed file
+     * There will be (wsiPerTask * amount of tasks in the passed file) workspace items
+     *
+     * @param filenameWorkspaces
+     *          The filename to store workspaces
+     * @param filenameWorkspaceItems
+     *          The filename to store workspace items
+     * @param wsiPerTask
+     *          How many workspace-items will be generated for one task
+     * @param peopleFile
+     *          The file where all people can be found
+     * @param taskFile
+     *          The file were all tasks can be found
+     * @throws IOException
+     */
+    public static void generateWorkspaceTest(String filenameWorkspaces, String filenameWorkspaceItems, int wsiPerTask, String peopleFile, String taskFile) throws IOException {
+        // Create Workspaces for every person
+        Collection<Person> people = getCurrentPeople(peopleFile);
+        StringBuilder sb = new StringBuilder(people.size() * 20);
+        people.stream().forEach( person -> sb.append(new Workspace(person.uuid)));
+        PrintWriter out = new PrintWriter(filenameWorkspaces);
+        out.print(sb);
+        out.close();
 
+        // Create Workspace Items for every task
+        Collection<Task> tasks = getCurrentTasks(taskFile);
+        StringBuilder sb2 = new StringBuilder(tasks.size() * 20);
+        tasks.stream().forEach( task -> sb2.append(new WorkspaceItem(task.uuid, wsiPerTask)) );
+        out = new PrintWriter(filenameWorkspaceItems);
+        out.print(sb2);
+        out.close();
     }
 
 

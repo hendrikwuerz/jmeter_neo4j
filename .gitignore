@@ -1,3 +1,4 @@
-./.*
-./out/*
-./directory
+.*
+out/*
+directory
+JMeterNeo4jData.iml
