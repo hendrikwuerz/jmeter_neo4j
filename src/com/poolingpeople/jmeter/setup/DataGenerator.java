@@ -22,6 +22,7 @@ public class DataGenerator {
     static final String filePeople = folder + "users.csv";
     static final String fileTasks = folder + "tasks.csv";
     static final String fileNotes = folder + "notes.csv";
+    static final String fileBugs = folder + "bugs.csv";
     static final String fileWorkspaces = folder + "workspaces.csv";
     static final String fileWorkspaceItems = folder + "workspaceItems.csv";
 
@@ -30,6 +31,7 @@ public class DataGenerator {
         generateTasks(fileTasks, 500);
         generateNotes(fileNotes, 500);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
+        generateCoreTest(fileBugs, 3, filePeople);
 
         /*
         if(args.length < 1) return;
@@ -72,7 +74,7 @@ public class DataGenerator {
      */
     private static Collection<Person> getCurrentPeople(String filename) throws IOException {
         LinkedList<Person> list = new LinkedList<Person>();
-        Files.lines(new File(filename).toPath()).forEach( line -> list.add(new Person(line)));
+        Files.lines(new File(filename).toPath()).forEach(line -> list.add(new Person(line)));
         return list;
     }
 
@@ -192,8 +194,18 @@ public class DataGenerator {
     }
 
 
-    public static void generateCoreTest() {
-
+    public static void generateCoreTest(String fileBugs, int bugsPerPerson, String filePeople) throws IOException {
+        // Create Bug for every person
+        Collection<Person> people = getCurrentPeople(filePeople);
+        StringBuilder sb = new StringBuilder(people.size() * 20);
+        people.stream().forEach( person -> {
+            for(int i = 0; i < bugsPerPerson; i++) {
+                sb.append(new Bug(person.uuid));
+            }
+        });
+        PrintWriter out = new PrintWriter(fileBugs);
+        out.print(sb);
+        out.close();
     }
 
 
