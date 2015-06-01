@@ -29,9 +29,8 @@ public class DataGenerator {
     public static void main(String[] args) throws IOException {
         generatePeople(filePeople, 500);
         generateTasks(fileTasks, 500);
-        generateNotes(fileNotes, 500);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
-        generateCoreTest(fileBugs, 3, filePeople);
+        generateCoreTest(fileNotes, 2, fileBugs, 3, filePeople);
 
         /*
         if(args.length < 1) return;
@@ -118,44 +117,6 @@ public class DataGenerator {
 
 
     /**
-     * Create a random csv file with notes
-     *
-     * @param filename
-     *          The path of the csv file for the notes
-     * @param amount
-     *          The amount of notes to be created
-     * @throws FileNotFoundException
-     */
-    public static void generateNotes(String filename, int amount) throws FileNotFoundException {
-        StringBuilder sb = new StringBuilder( 90 * amount );
-        for(int i = 0; i < amount; i++) {
-            sb.append(new Note(i));
-        }
-
-        PrintWriter out = new PrintWriter(filename);
-        out.print(sb);
-        out.close();
-    }
-
-
-    /**
-     * returns a list of notes based on the csv file passed as argument
-     *
-     * @param filename
-     *          The path of the csv file with the notes
-     * @return
-     *          a list of notes based on the csv file
-     * @throws IOException
-     *          if reading file is not possible
-     */
-    private static Collection<Note> getCurrentNotes(String filename) throws IOException {
-        LinkedList<Note> list = new LinkedList<Note>();
-        Files.lines(new File(filename).toPath()).forEach( line -> list.add(new Note(line)));
-        return list;
-    }
-
-
-    /**
      * generates the file for all workspaces and for all workspace items.
      * There will be as many workspaces as people exists in the passed file
      * There will be as many workspace items as tasks in the passed file
@@ -194,17 +155,30 @@ public class DataGenerator {
     }
 
 
-    public static void generateCoreTest(String fileBugs, int bugsPerPerson, String filePeople) throws IOException {
-        // Create Bug for every person
+    public static void generateCoreTest(String fileNotes, int notesPerPerson, String fileBugs, int bugsPerPerson, String filePeople) throws IOException {
+
         Collection<Person> people = getCurrentPeople(filePeople);
+
+        // Create Note for every person
         StringBuilder sb = new StringBuilder(people.size() * 20);
         people.stream().forEach( person -> {
-            for(int i = 0; i < bugsPerPerson; i++) {
-                sb.append(new Bug(person.uuid));
+            for(int i = 0; i < notesPerPerson; i++) {
+                sb.append(new Note(person.uuid));
             }
         });
-        PrintWriter out = new PrintWriter(fileBugs);
+        PrintWriter out = new PrintWriter(fileNotes);
         out.print(sb);
+        out.close();
+
+        // Create Bug for every person
+        StringBuilder sb2 = new StringBuilder(people.size() * 20);
+        people.stream().forEach( person -> {
+            for(int i = 0; i < bugsPerPerson; i++) {
+                sb2.append(new Bug(person.uuid));
+            }
+        });
+        out = new PrintWriter(fileBugs);
+        out.print(sb2);
         out.close();
     }
 

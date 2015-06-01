@@ -8,17 +8,19 @@ import java.util.UUID;
 public class Note {
 
     long date;
-    String description, privacy, title, type, uuid;
+    String uuidOfOwner, description, privacy, title, type, uuid;
 
-    public Note(int i) {
+    public Note(String uuidOfOwner) {
+        this.uuidOfOwner = uuidOfOwner;
         date = System.currentTimeMillis() - (long)(Math.random() * 1000000000);
-        description = "This is my note " + i + " description: " + DataGenerator.getRandomString(30, DataGenerator.CHARACTERS);
+        description = "This is my great note description: " + DataGenerator.getRandomString(30, DataGenerator.CHARACTERS);
         privacy = "PRIVATE";
-        title = "My note title " + i;
+        title = "My note title ";
         type = "note";
         uuid = UUID.randomUUID().toString();
     }
 
+    /*
     public Note(String s) {
         String[] arr = s.split(",");
         date = Long.parseLong(arr[0]);
@@ -28,6 +30,7 @@ public class Note {
         type = arr[4];
         uuid = arr[5];
     }
+    */
 
     @Override
     public String toString() {
