@@ -21,12 +21,14 @@ public class DataGenerator {
     static final String folder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/random_";
     static final String filePeople = folder + "users.csv";
     static final String fileTasks = folder + "tasks.csv";
+    static final String fileNotes = folder + "notes.csv";
     static final String fileWorkspaces = folder + "workspaces.csv";
     static final String fileWorkspaceItems = folder + "workspaceItems.csv";
 
     public static void main(String[] args) throws IOException {
         generatePeople(filePeople, 500);
         generateTasks(fileTasks, 500);
+        generateNotes(fileNotes, 500);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
 
         /*
@@ -34,44 +36,6 @@ public class DataGenerator {
 
         if(args[0].equals("people")) generatePeople("/home/hendrik/dev/pooling-people/JMeter/Neo4j/random_users_java.csv", 300);
 */
-    }
-
-
-    /**
-     * Create a random csv file with tasks
-     *
-     * @param filename
-     *          The path of the csv file for the tasks
-     * @param amount
-     *          The amount of tasks to be created
-     * @throws FileNotFoundException
-     */
-    public static void generateTasks(String filename, int amount) throws FileNotFoundException {
-        StringBuilder sb = new StringBuilder( 90 * amount );
-        for(int i = 0; i < amount; i++) {
-            sb.append(new Task(i));
-        }
-
-        PrintWriter out = new PrintWriter(filename);
-        out.print(sb);
-        out.close();
-    }
-
-
-    /**
-     * returns a list of Tasks based on the csv file passed as argument
-     *
-     * @param filename
-     *          The path of the csv file with the tasks
-     * @return
-     *          a list of Tasks based on the csv file
-     * @throws IOException
-     *          if reading file is not possible
-     */
-    private static Collection<Task> getCurrentTasks(String filename) throws IOException {
-        LinkedList<Task> list = new LinkedList<Task>();
-        Files.lines(new File(filename).toPath()).forEach( line -> list.add(new Task(line)));
-        return list;
     }
 
 
@@ -114,6 +78,82 @@ public class DataGenerator {
 
 
     /**
+     * Create a random csv file with tasks
+     *
+     * @param filename
+     *          The path of the csv file for the tasks
+     * @param amount
+     *          The amount of tasks to be created
+     * @throws FileNotFoundException
+     */
+    public static void generateTasks(String filename, int amount) throws FileNotFoundException {
+        StringBuilder sb = new StringBuilder( 90 * amount );
+        for(int i = 0; i < amount; i++) {
+            sb.append(new Task(i));
+        }
+
+        PrintWriter out = new PrintWriter(filename);
+        out.print(sb);
+        out.close();
+    }
+
+
+    /**
+     * returns a list of Tasks based on the csv file passed as argument
+     *
+     * @param filename
+     *          The path of the csv file with the tasks
+     * @return
+     *          a list of Tasks based on the csv file
+     * @throws IOException
+     *          if reading file is not possible
+     */
+    private static Collection<Task> getCurrentTasks(String filename) throws IOException {
+        LinkedList<Task> list = new LinkedList<Task>();
+        Files.lines(new File(filename).toPath()).forEach(line -> list.add(new Task(line)));
+        return list;
+    }
+
+
+    /**
+     * Create a random csv file with notes
+     *
+     * @param filename
+     *          The path of the csv file for the notes
+     * @param amount
+     *          The amount of notes to be created
+     * @throws FileNotFoundException
+     */
+    public static void generateNotes(String filename, int amount) throws FileNotFoundException {
+        StringBuilder sb = new StringBuilder( 90 * amount );
+        for(int i = 0; i < amount; i++) {
+            sb.append(new Note(i));
+        }
+
+        PrintWriter out = new PrintWriter(filename);
+        out.print(sb);
+        out.close();
+    }
+
+
+    /**
+     * returns a list of notes based on the csv file passed as argument
+     *
+     * @param filename
+     *          The path of the csv file with the notes
+     * @return
+     *          a list of notes based on the csv file
+     * @throws IOException
+     *          if reading file is not possible
+     */
+    private static Collection<Note> getCurrentNotes(String filename) throws IOException {
+        LinkedList<Note> list = new LinkedList<Note>();
+        Files.lines(new File(filename).toPath()).forEach( line -> list.add(new Note(line)));
+        return list;
+    }
+
+
+    /**
      * generates the file for all workspaces and for all workspace items.
      * There will be as many workspaces as people exists in the passed file
      * There will be as many workspace items as tasks in the passed file
@@ -149,6 +189,11 @@ public class DataGenerator {
         out = new PrintWriter(filenameWorkspaceItems);
         out.print(sb2);
         out.close();
+    }
+
+
+    public static void generateCoreTest() {
+
     }
 
 
