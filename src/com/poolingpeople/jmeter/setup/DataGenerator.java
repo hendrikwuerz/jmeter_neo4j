@@ -24,6 +24,7 @@ public class DataGenerator {
     static final String fileNotes = folder + "notes.csv";
     static final String fileBugs = folder + "bugs.csv";
     static final String filePools = folder + "pools.csv";
+    static final String fileTalks = folder + "talks.csv";
     static final String fileWorkspaces = folder + "workspaces.csv";
     static final String fileWorkspaceItems = folder + "workspaceItems.csv";
 
@@ -31,7 +32,7 @@ public class DataGenerator {
         generatePeople(filePeople, 500);
         generateTasks(fileTasks, 500);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
-        generateCoreTest(filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
+        generateCoreTest(fileTalks, 2, filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
 
         /*
         if(args.length < 1) return;
@@ -156,7 +157,7 @@ public class DataGenerator {
     }
 
 
-    public static void generateCoreTest(String filePools, int poolsPerPerson, String fileNotes, int notesPerPerson, String fileBugs, int bugsPerPerson, String filePeople) throws IOException {
+    public static void generateCoreTest(String fileTalks, int talksPerPerson, String filePools, int poolsPerPerson, String fileNotes, int notesPerPerson, String fileBugs, int bugsPerPerson, String filePeople) throws IOException {
 
         Collection<Person> people = getCurrentPeople(filePeople);
 
@@ -191,6 +192,17 @@ public class DataGenerator {
         });
         out = new PrintWriter(filePools);
         out.print(sb3);
+        out.close();
+
+        // Create Talk for every person
+        StringBuilder sb4 = new StringBuilder(people.size() * 20);
+        people.stream().forEach( person -> {
+            for(int i = 0; i < talksPerPerson; i++) {
+                sb4.append(new Talk(person.uuid));
+            }
+        });
+        out = new PrintWriter(fileTalks);
+        out.print(sb4);
         out.close();
     }
 
