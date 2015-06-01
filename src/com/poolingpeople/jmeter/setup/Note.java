@@ -36,6 +36,7 @@ public class Note {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
+        sb.append(uuidOfOwner).append(",");
         sb.append(date).append(",");
         sb.append(description).append(",");
         sb.append(privacy).append(",");
