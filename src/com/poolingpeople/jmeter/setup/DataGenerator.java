@@ -116,21 +116,21 @@ public class DataGenerator {
     /**
      * generates the file for all workspaces and for all workspace items.
      * There will be as many workspaces as people exists in the passed file
-     * There will be (wsiPerTask * amount of tasks in the passed file) workspace items
+     * There will be as many workspace items as tasks in the passed file
      *
      * @param filenameWorkspaces
      *          The filename to store workspaces
      * @param filenameWorkspaceItems
      *          The filename to store workspace items
-     * @param wsiPerTask
-     *          How many workspace-items will be generated for one task
+     * @param amountPlaces
+     *          How many workspace-item places will be needed for one workspace item (normally this is 3)
      * @param peopleFile
      *          The file where all people can be found
      * @param taskFile
      *          The file were all tasks can be found
      * @throws IOException
      */
-    public static void generateWorkspaceTest(String filenameWorkspaces, String filenameWorkspaceItems, int wsiPerTask, String peopleFile, String taskFile) throws IOException {
+    public static void generateWorkspaceTest(String filenameWorkspaces, String filenameWorkspaceItems, int amountPlaces, String peopleFile, String taskFile) throws IOException {
         // Create Workspaces for every person
         Collection<Person> people = getCurrentPeople(peopleFile);
         StringBuilder sb = new StringBuilder(people.size() * 20);
@@ -142,7 +142,10 @@ public class DataGenerator {
         // Create Workspace Items for every task
         Collection<Task> tasks = getCurrentTasks(taskFile);
         StringBuilder sb2 = new StringBuilder(tasks.size() * 20);
-        tasks.stream().forEach( task -> sb2.append(new WorkspaceItem(task.uuid, wsiPerTask)) );
+        int[] idx = {0}; // index of current task
+        int range = 5; // range of numbers of workspaceItems places
+        int repeatAll = 100; // every repeatAll items it starts again with 0 for wsi place
+        tasks.stream().forEach( task -> {sb2.append(new WorkspaceItem(task.uuid, amountPlaces, (idx[0]*range) % repeatAll, range)); idx[0]++; });
         out = new PrintWriter(filenameWorkspaceItems);
         out.print(sb2);
         out.close();

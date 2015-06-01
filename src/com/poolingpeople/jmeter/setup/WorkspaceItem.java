@@ -16,14 +16,14 @@ public class WorkspaceItem {
      * @param amountPlaces
      *          How many column / row pairs have to be available
      */
-    public WorkspaceItem(String referencedItemUuid, int amountPlaces) {
+    public WorkspaceItem(String referencedItemUuid, int amountPlaces, int offset, int range) {
         this.referencedItemUuid = referencedItemUuid;
         text = "My text is " + DataGenerator.getRandomString(5, DataGenerator.CHARACTERS);
         places = new int[amountPlaces];
         for(int i = 0; i < amountPlaces; i++) {
             int value;
             do {
-                value = (int)(Math.random() * 20);
+                value = (int)(offset + Math.random() * range);
             } while(isUsedInArray(places, value));
 
             places[i] = value;
