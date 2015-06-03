@@ -27,11 +27,13 @@ public class DataGenerator {
     static final String fileTalks = folder + "talks.csv";
     static final String fileWorkspaces = folder + "workspaces.csv";
     static final String fileWorkspaceItems = folder + "workspaceItems.csv";
+    static final String fileLinkedList = folder + "linkedList.csv";
 
     public static void main(String[] args) throws IOException {
         generatePeople(filePeople, 500);
         generateCoreTest(fileTasks, 2, fileTalks, 2, filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
+        generateLinkedList(fileLinkedList, 500);
 
         /*
         if(args.length < 1) return;
@@ -192,6 +194,21 @@ public class DataGenerator {
         });
         out = new PrintWriter(fileTasks);
         out.print(sb5);
+        out.close();
+    }
+
+
+    public static void generateLinkedList(String file, int amount) throws FileNotFoundException {
+
+        StringBuilder sb = new StringBuilder(amount * 20);
+        String last = "first-list-item-uuid";
+        for(int i = 0; i < amount; i++) {
+            LinkedListElement elem = new LinkedListElement(last, String.valueOf(i));
+            sb.append(elem);
+            last = elem.uuid;
+        }
+        PrintWriter out = new PrintWriter(file);
+        out.print(sb);
         out.close();
     }
 
