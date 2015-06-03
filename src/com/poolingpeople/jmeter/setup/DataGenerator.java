@@ -30,9 +30,8 @@ public class DataGenerator {
 
     public static void main(String[] args) throws IOException {
         generatePeople(filePeople, 500);
-        generateTasks(fileTasks, 500);
+        generateCoreTest(fileTasks, 2, fileTalks, 2, filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
-        generateCoreTest(fileTalks, 2, filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
 
         /*
         if(args.length < 1) return;
@@ -81,27 +80,6 @@ public class DataGenerator {
 
 
     /**
-     * Create a random csv file with tasks
-     *
-     * @param filename
-     *          The path of the csv file for the tasks
-     * @param amount
-     *          The amount of tasks to be created
-     * @throws FileNotFoundException
-     */
-    public static void generateTasks(String filename, int amount) throws FileNotFoundException {
-        StringBuilder sb = new StringBuilder( 90 * amount );
-        for(int i = 0; i < amount; i++) {
-            sb.append(new Task(i));
-        }
-
-        PrintWriter out = new PrintWriter(filename);
-        out.print(sb);
-        out.close();
-    }
-
-
-    /**
      * returns a list of Tasks based on the csv file passed as argument
      *
      * @param filename
@@ -113,7 +91,7 @@ public class DataGenerator {
      */
     private static Collection<Task> getCurrentTasks(String filename) throws IOException {
         LinkedList<Task> list = new LinkedList<Task>();
-        Files.lines(new File(filename).toPath()).forEach(line -> list.add(new Task(line)));
+        Files.lines(new File(filename).toPath()).forEach(line -> list.add(new Task(line, true)));
         return list;
     }
 
@@ -157,7 +135,7 @@ public class DataGenerator {
     }
 
 
-    public static void generateCoreTest(String fileTalks, int talksPerPerson, String filePools, int poolsPerPerson, String fileNotes, int notesPerPerson, String fileBugs, int bugsPerPerson, String filePeople) throws IOException {
+    public static void generateCoreTest(String fileTasks, int tasksPerPerson, String fileTalks, int talksPerPerson, String filePools, int poolsPerPerson, String fileNotes, int notesPerPerson, String fileBugs, int bugsPerPerson, String filePeople) throws IOException {
 
         Collection<Person> people = getCurrentPeople(filePeople);
 
@@ -203,6 +181,17 @@ public class DataGenerator {
         });
         out = new PrintWriter(fileTalks);
         out.print(sb4);
+        out.close();
+
+        // Create Task for every person
+        StringBuilder sb5 = new StringBuilder(people.size() * 20);
+        people.stream().forEach( person -> {
+            for(int i = 0; i < tasksPerPerson; i++) {
+                sb5.append(new Task(person.uuid));
+            }
+        });
+        out = new PrintWriter(fileTasks);
+        out.print(sb5);
         out.close();
     }
 
