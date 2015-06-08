@@ -2,3 +2,4 @@
 out/*
 directory
 JMeterNeo4jData.iml
+jmeter/random_*

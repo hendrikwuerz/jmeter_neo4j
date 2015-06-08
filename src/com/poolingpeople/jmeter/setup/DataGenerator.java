@@ -18,7 +18,7 @@ public class DataGenerator {
     static final String CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static final String NUMBERS = "0123456789";
 
-    static final String folder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/random_";
+    static final String folder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/random_";
     static final String filePeople = folder + "users.csv";
     static final String fileTasks = folder + "tasks.csv";
     static final String fileNotes = folder + "notes.csv";
@@ -33,7 +33,7 @@ public class DataGenerator {
     static final String fileStuffRelation = folder + "stuffRelation.csv";
 
     public static void main(String[] args) throws IOException {
-        generatePeople(filePeople, 500);
+        generatePeople(filePeople, 1000);
         generateCoreTest(fileTasks, 2, fileTalks, 2, filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
         generateLinkedList(fileLinkedList, fileLinkedListCompare, 500);
