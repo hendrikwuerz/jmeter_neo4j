@@ -28,6 +28,7 @@ public class DataGenerator {
     static final String fileWorkspaces = folder + "workspaces.csv";
     static final String fileWorkspaceItems = folder + "workspaceItems.csv";
     static final String fileLinkedList = folder + "linkedList.csv";
+    static final String fileLinkedListCompare = folder + "linkedListCompare.csv";
     static final String fileStuffElement = folder + "stuffElement.csv";
     static final String fileStuffRelation = folder + "stuffRelation.csv";
 
@@ -35,8 +36,8 @@ public class DataGenerator {
         generatePeople(filePeople, 500);
         generateCoreTest(fileTasks, 2, fileTalks, 2, filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
         generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
-        generateLinkedList(fileLinkedList, 500);
-        generateStuff(fileStuffElement, fileStuffRelation, 5, 5);
+        generateLinkedList(fileLinkedList, fileLinkedListCompare, 500);
+        generateStuff(fileStuffElement, fileStuffRelation, 5, 4);
 
         /*
         if(args.length < 1) return;
@@ -201,16 +202,32 @@ public class DataGenerator {
     }
 
 
-    public static void generateLinkedList(String file, int amount) throws FileNotFoundException {
+    public static void generateLinkedList(String file, String fileCompare, int amount) throws FileNotFoundException {
+
+        LinkedList<LinkedListElement> list = new LinkedList<>();
 
         StringBuilder sb = new StringBuilder(amount * 20);
         String last = "first-list-item-uuid";
         for(int i = 0; i < amount; i++) {
             LinkedListElement elem = new LinkedListElement(last, String.valueOf(i));
+            list.add(elem);
             sb.append(elem);
             last = elem.uuid;
         }
         PrintWriter out = new PrintWriter(file);
+        out.print(sb);
+        out.close();
+
+        sb = new StringBuilder(amount * 20);
+        for(int i = 0; i < amount; i++) {
+            Random rand = new Random();
+            int elem1 = rand.nextInt(list.size());
+            int elem2 = rand.nextInt(list.size());
+
+            //sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "data\":[{\"row\":[" : "data\":[]").append(System.lineSeparator());
+            sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(System.lineSeparator());
+        }
+        out = new PrintWriter(fileCompare);
         out.print(sb);
         out.close();
     }
