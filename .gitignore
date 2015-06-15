@@ -5,3 +5,4 @@ JMeterNeo4jData.iml
 jmeter/random_*
 jmeter/result*
 docker/data/tmp*
+jmeter/data*

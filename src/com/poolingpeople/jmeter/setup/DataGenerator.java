@@ -18,26 +18,35 @@ public class DataGenerator {
     static final String CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static final String NUMBERS = "0123456789";
 
-    static final String folder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/random_";
-    static final String filePeople = folder + "users.csv";
-    static final String fileTasks = folder + "tasks.csv";
-    static final String fileNotes = folder + "notes.csv";
-    static final String fileBugs = folder + "bugs.csv";
-    static final String filePools = folder + "pools.csv";
-    static final String fileTalks = folder + "talks.csv";
-    static final String fileWorkspaces = folder + "workspaces.csv";
-    static final String fileWorkspaceItems = folder + "workspaceItems.csv";
-    static final String fileLinkedList = folder + "linkedList.csv";
-    static final String fileLinkedListCompare = folder + "linkedListCompare.csv";
-    static final String fileStuffElement = folder + "stuffElement.csv";
-    static final String fileStuffRelation = folder + "stuffRelation.csv";
+    static final String folder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/data/";
+    static final String filePrefix = "random_";
+    static final int amountServers = 5;
+
+    static final String filePeople = "users.csv";
+    static final String fileTasks = "tasks.csv";
+    static final String fileNotes = "notes.csv";
+    static final String fileBugs = "bugs.csv";
+    static final String filePools = "pools.csv";
+    static final String fileTalks = "talks.csv";
+    static final String fileWorkspaces = "workspaces.csv";
+    static final String fileWorkspaceItems = "workspaceItems.csv";
+    static final String fileLinkedList = "linkedList.csv";
+    static final String fileLinkedListCompare = "linkedListCompare.csv";
+    static final String fileStuffElement = "stuffElement.csv";
+    static final String fileStuffRelation = "stuffRelation.csv";
 
     public static void main(String[] args) throws IOException {
-        generatePeople(filePeople, 1000);
-        generateCoreTest(fileTasks, 2, fileTalks, 2, filePools, 2, fileNotes, 2, fileBugs, 3, filePeople);
-        generateWorkspaceTest(fileWorkspaces, fileWorkspaceItems, 3, filePeople, fileTasks);
-        generateLinkedList(fileLinkedList, fileLinkedListCompare, 500);
-        generateStuff(fileStuffElement, fileStuffRelation, 5, 4);
+        for(int i = 0; i < amountServers; i++) {
+            File dir = new File(folder + i);
+            dir.mkdirs();
+            String pre = folder + i + "/" + filePrefix;
+
+            generatePeople(pre+filePeople, 1000);
+            generateCoreTest(pre+fileTasks, 2, pre+fileTalks, 2, pre+filePools, 2, pre+fileNotes, 2, pre+fileBugs, 3, pre+filePeople);
+            generateWorkspaceTest(pre+fileWorkspaces, pre+fileWorkspaceItems, 3, pre+filePeople, pre+fileTasks);
+            generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, 500);
+            generateStuff(pre+fileStuffElement, pre+fileStuffRelation, 5, 4);
+        }
 
         /*
         if(args.length < 1) return;
