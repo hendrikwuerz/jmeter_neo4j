@@ -41,7 +41,7 @@ public class DataGenerator {
             dir.mkdirs();
             String pre = folder + i + "/" + filePrefix;
 
-            generatePeople(pre+filePeople, 1000);
+            generatePeople(pre+filePeople, i, 1000);
             generateCoreTest(pre+fileTasks, 2, pre+fileTalks, 2, pre+filePools, 2, pre+fileNotes, 2, pre+fileBugs, 3, pre+filePeople);
             generateWorkspaceTest(pre+fileWorkspaces, pre+fileWorkspaceItems, 3, pre+filePeople, pre+fileTasks);
             generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, 500);
@@ -65,10 +65,10 @@ public class DataGenerator {
      *          The amount of people to be created
      * @throws FileNotFoundException
      */
-    public static void generatePeople(String filename, int amount) throws FileNotFoundException {
+    public static void generatePeople(String filename, int filenumber, int amount) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder( 150 * amount );
         for(int i = 0; i < amount; i++) {
-            sb.append(new Person(i));
+            sb.append(new Person(filenumber * amount + i));
         }
         PrintWriter out = new PrintWriter(filename);
         out.print(sb);
