@@ -37,9 +37,9 @@ public class DataGenerator {
 
     public static void main(String[] args) throws IOException {
         for(int i = 0; i < amountServers; i++) {
-            File dir = new File(folder + i);
+            File dir = new File(folder + (i+1));
             dir.mkdirs();
-            String pre = folder + i + "/" + filePrefix;
+            String pre = folder + (i+1) + "/" + filePrefix;
 
             generatePeople(pre+filePeople, i, 1000);
             generateCoreTest(pre+fileTasks, 2, pre+fileTalks, 2, pre+filePools, 2, pre+fileNotes, 2, pre+fileBugs, 3, pre+filePeople);
