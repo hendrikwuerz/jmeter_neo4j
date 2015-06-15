@@ -47,12 +47,6 @@ public class DataGenerator {
             generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, 500);
             generateStuff(pre+fileStuffElement, pre+fileStuffRelation, 5, 4);
         }
-
-        /*
-        if(args.length < 1) return;
-
-        if(args[0].equals("people")) generatePeople("/home/hendrik/dev/pooling-people/JMeter/Neo4j/random_users_java.csv", 300);
-*/
     }
 
 
@@ -70,9 +64,7 @@ public class DataGenerator {
         for(int i = 0; i < amount; i++) {
             sb.append(new Person(filenumber * amount + i));
         }
-        PrintWriter out = new PrintWriter(filename);
-        out.print(sb);
-        out.close();
+        saveIn(filename, sb);
 
     }
 
@@ -133,9 +125,7 @@ public class DataGenerator {
         Collection<Person> people = getCurrentPeople(peopleFile);
         StringBuilder sb = new StringBuilder(people.size() * 20);
         people.stream().forEach( person -> sb.append(new Workspace(person.uuid)));
-        PrintWriter out = new PrintWriter(filenameWorkspaces);
-        out.print(sb);
-        out.close();
+        saveIn(filenameWorkspaces, sb);
 
         // Create Workspace Items for every task
         Collection<Task> tasks = getCurrentTasks(taskFile);
@@ -144,9 +134,7 @@ public class DataGenerator {
         int range = 5; // range of numbers of workspaceItems places
         int repeatAll = 100; // every repeatAll items it starts again with 0 for wsi place
         tasks.stream().forEach( task -> {sb2.append(new WorkspaceItem(task.uuid, amountPlaces, (idx[0]*range) % repeatAll, range)); idx[0]++; });
-        out = new PrintWriter(filenameWorkspaceItems);
-        out.print(sb2);
-        out.close();
+        saveIn(filenameWorkspaceItems, sb2);
     }
 
 
@@ -161,9 +149,7 @@ public class DataGenerator {
                 sb.append(new Note(person.uuid));
             }
         });
-        PrintWriter out = new PrintWriter(fileNotes);
-        out.print(sb);
-        out.close();
+        saveIn(fileNotes, sb);
 
         // Create Bug for every person
         StringBuilder sb2 = new StringBuilder(people.size() * 20);
@@ -172,9 +158,7 @@ public class DataGenerator {
                 sb2.append(new Bug(person.uuid));
             }
         });
-        out = new PrintWriter(fileBugs);
-        out.print(sb2);
-        out.close();
+        saveIn(fileBugs, sb2);
 
         // Create Pool for every person
         StringBuilder sb3 = new StringBuilder(people.size() * 20);
@@ -183,9 +167,7 @@ public class DataGenerator {
                 sb3.append(new Pool(person.uuid));
             }
         });
-        out = new PrintWriter(filePools);
-        out.print(sb3);
-        out.close();
+        saveIn(filePools, sb3);
 
         // Create Talk for every person
         StringBuilder sb4 = new StringBuilder(people.size() * 20);
@@ -194,9 +176,7 @@ public class DataGenerator {
                 sb4.append(new Talk(person.uuid));
             }
         });
-        out = new PrintWriter(fileTalks);
-        out.print(sb4);
-        out.close();
+        saveIn(fileTalks, sb4);
 
         // Create Task for every person
         StringBuilder sb5 = new StringBuilder(people.size() * 20);
@@ -205,9 +185,7 @@ public class DataGenerator {
                 sb5.append(new Task(person.uuid));
             }
         });
-        out = new PrintWriter(fileTasks);
-        out.print(sb5);
-        out.close();
+        saveIn(fileTasks, sb5);
     }
 
 
@@ -223,9 +201,7 @@ public class DataGenerator {
             sb.append(elem);
             last = elem.uuid;
         }
-        PrintWriter out = new PrintWriter(file);
-        out.print(sb);
-        out.close();
+        saveIn(file, sb);
 
         sb = new StringBuilder(amount * 20);
         for(int i = 0; i < amount; i++) {
@@ -236,24 +212,25 @@ public class DataGenerator {
             //sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "data\":[{\"row\":[" : "data\":[]").append(System.lineSeparator());
             sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(System.lineSeparator());
         }
-        out = new PrintWriter(fileCompare);
-        out.print(sb);
-        out.close();
+        saveIn(fileCompare, sb);
     }
 
     public static void generateStuff(String fileStuffElement, String fileStuffRelation, int amount, int deep) throws FileNotFoundException {
         Star root = new Star(amount, deep);
 
-        PrintWriter out = new PrintWriter(fileStuffElement);
-        out.print(root.getElement());
-        out.close();
-
-        out = new PrintWriter(fileStuffRelation);
-        out.print(root.getRelation());
-        out.close();
+        saveIn(fileStuffElement, root.getElement());
+        saveIn(fileStuffRelation, root.getRelation());
     }
 
+    private static void saveIn(String filename, StringBuilder sb) throws FileNotFoundException {
+        saveIn(filename, sb.toString());
+    }
 
+    private static void saveIn(String filename, String sb) throws FileNotFoundException {
+        PrintWriter out = new PrintWriter(filename);
+        out.print(sb);
+        out.close();
+    }
 
 
 
