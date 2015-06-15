@@ -919,7 +919,7 @@
             <stringProp name="filename">${CSVFileDir}/random_talks.csv</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">talkUuidOfOwner,talkPrivacy,talkDescription,talkType,talkTitle,talkTalksType,talkUuid</stringProp>
           </CSVDataSet>
@@ -981,7 +981,7 @@
             <stringProp name="filename">${CSVFileDir}/random_tasks.csv</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.all</stringProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">taskDateIssued,taskDateModified,taskUuidOfOwner,taskTitle,taskType,taskUuid,taskStatus</stringProp>
           </CSVDataSet>
