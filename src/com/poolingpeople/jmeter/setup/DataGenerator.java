@@ -32,6 +32,7 @@ public class DataGenerator {
     static final String fileWorkspaceItems = "workspaceItems.csv";
     static final String fileLinkedList = "linkedList.csv";
     static final String fileLinkedListCompare = "linkedListCompare.csv";
+    static final String fileLinkedListCompareShort = "linkedListCompareShort.csv";
     static final String fileStuffElement = "stuffElement.csv";
     static final String fileStuffRelation = "stuffRelation.csv";
 
@@ -44,7 +45,7 @@ public class DataGenerator {
             generatePeople(pre+filePeople, i, 1000);
             generateCoreTest(pre+fileTasks, 2, pre+fileTalks, 2, pre+filePools, 2, pre+fileNotes, 2, pre+fileBugs, 3, pre+filePeople);
             generateWorkspaceTest(pre+fileWorkspaces, pre+fileWorkspaceItems, 3, pre+filePeople, pre+fileTasks);
-            generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, 200);
+            generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, pre+fileLinkedListCompareShort, 200);
             generateStuff(pre+fileStuffElement, pre+fileStuffRelation, 5, 2);
         }
     }
@@ -189,7 +190,7 @@ public class DataGenerator {
     }
 
 
-    public static void generateLinkedList(String file, String fileCompare, int amount) throws FileNotFoundException {
+    public static void generateLinkedList(String file, String fileCompare, String fileCompareShort, int amount) throws FileNotFoundException {
 
         LinkedList<LinkedListElement> list = new LinkedList<>();
 
@@ -203,6 +204,7 @@ public class DataGenerator {
         }
         saveIn(file, sb);
 
+        // Long check
         sb = new StringBuilder(amount * 20);
         for(int i = 0; i < amount; i++) {
             Random rand = new Random();
@@ -213,6 +215,17 @@ public class DataGenerator {
             sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(",").append(elem2 - elem1).append(System.lineSeparator());
         }
         saveIn(fileCompare, sb);
+
+        // short check
+        sb = new StringBuilder(amount * 20);
+        for(int i = 0; i < amount; i++) {
+            Random rand = new Random();
+            int elem1 = rand.nextInt(list.size());
+            int elem2 = elem1 + 5 - rand.nextInt(11);
+
+            sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(",").append(elem2 - elem1).append(System.lineSeparator());
+        }
+        saveIn(fileCompareShort, sb);
     }
 
     public static void generateStuff(String fileStuffElement, String fileStuffRelation, int amount, int deep) throws FileNotFoundException {

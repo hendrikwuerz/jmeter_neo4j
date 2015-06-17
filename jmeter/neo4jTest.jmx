@@ -11,6 +11,29 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Access AWS" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="DatabaseIP" elementType="Argument">
+            <stringProp name="Argument.name">DatabaseIP</stringProp>
+            <stringProp name="Argument.value">neo4j.stress.stresstest.intern.poolingpeople.com</stringProp>
+            <stringProp name="Argument.desc">IP of used Database (localhost, neo4j.poolingpeople.com, 172.17.42.1, ...)</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DatabasePort" elementType="Argument">
+            <stringProp name="Argument.name">DatabasePort</stringProp>
+            <stringProp name="Argument.value">80</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Port of database</stringProp>
+          </elementProp>
+          <elementProp name="CSVFileDir" elementType="Argument">
+            <stringProp name="Argument.name">CSVFileDir</stringProp>
+            <stringProp name="Argument.value">/input_data</stringProp>
+            <stringProp name="Argument.desc">Where CSV files can be found. When run in docker &quot;/input_data&quot; else &quot;.&quot;</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Access Docker" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="DatabaseIP" elementType="Argument">
@@ -34,7 +57,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Access Lokal" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Access Lokal" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="DatabaseIP" elementType="Argument">
             <stringProp name="Argument.name">DatabaseIP</stringProp>
@@ -143,12 +166,6 @@
             <stringProp name="Argument.desc">Threads für LinkedList Elemente</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="amountLoopsLinkedList" elementType="Argument">
-            <stringProp name="Argument.name">amountLoopsLinkedList</stringProp>
-            <stringProp name="Argument.value">5</stringProp>
-            <stringProp name="Argument.desc">Loops für LinkedList Elemente</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="amountThreadsLinkedListGet" elementType="Argument">
             <stringProp name="Argument.name">amountThreadsLinkedListGet</stringProp>
             <stringProp name="Argument.value">5</stringProp>
@@ -192,7 +209,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group: clean and prepare DB" enabled="false">
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group: clean and prepare DB" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -302,7 +319,7 @@
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Generate Stuff" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Generate Stuff" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -371,7 +388,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Relate Stuff" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Relate Stuff" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -440,7 +457,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: set up" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: set up" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -509,7 +526,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: Create Bug / Note / Pool / Talk / Task" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: Create Bug / Note / Pool / Talk / Task" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -790,7 +807,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: Get Component" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: Get Component" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -859,7 +876,7 @@
           <hashTree/>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion: Correct note" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="-1855326904">,&quot;title&quot;:&quot;${noteTitle}&quot;,&quot;description&quot;</stringProp>
+              <stringProp name="969693952">&quot;title&quot;:&quot;${noteTitle}&quot;</stringProp>
             </collectionProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
@@ -921,7 +938,7 @@
           <hashTree/>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion: Correct note" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="-1207203634">,&quot;title&quot;:&quot;${talkTitle}&quot;,&quot;description&quot;</stringProp>
+              <stringProp name="675803398">&quot;title&quot;:&quot;${talkTitle}&quot;</stringProp>
             </collectionProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
@@ -983,7 +1000,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: TestGetOwnerComponent" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: TestGetOwnerComponent" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1052,7 +1069,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: getWorkspaceItems" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: getWorkspaceItems" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1463,7 +1480,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: GRUD User" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: GRUD User" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1646,7 +1663,7 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: GetOwnedComponent" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: Core: GetOwnedComponent" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1724,7 +1741,7 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - start" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - start" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1782,7 +1799,7 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - nods" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - nods" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1851,7 +1868,7 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - relations" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - relations" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1920,13 +1937,13 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - get" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - get short" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">${amountLoopsLinkedListGet}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${amountThreadsLinkedListGet}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1431962675000</longProp>
         <longProp name="ThreadGroup.end_time">1431962675000</longProp>
@@ -1935,7 +1952,18 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="LinkedList: Get last Item" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">${CSVFileDir}/random_linkedListCompareShort.csv</stringProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode">shareMode.group</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">uuid1,uuid2,result,distance</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="LinkedList: Check access" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -1943,8 +1971,8 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
 	&quot;statements&quot; : [ {&#xd;
-		&quot;statement&quot;:&quot;MATCH (root:listItem{uuid:&apos;first-list-item-uuid&apos;})-[:links*0..]-&gt;(next:listItem) RETURN next&quot;,&#xd;
-		&quot;parameters&quot;:{}&#xd;
+		&quot;statement&quot;:&quot;MATCH (root:listItem{uuid:{uuid1}})-[:links*]-&gt;(next:listItem{uuid:{uuid2}}) RETURN count(next)&gt;0 as result&quot;,&#xd;
+		&quot;parameters&quot;:{&quot;uuid1&quot;:&quot;${uuid1}&quot;,&quot;uuid2&quot;:&quot;${uuid2}&quot;}&#xd;
 	}]&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -1978,26 +2006,24 @@ vars.put(&quot;current_person_givenName&quot;, response.results[0].data[0].row[0
           </ResponseAssertion>
           <hashTree/>
           <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion" enabled="true">
-            <stringProp name="filename"></stringProp>
+            <stringProp name="scriptLanguage">javascript</stringProp>
             <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
             <stringProp name="script">eval(&apos;var response=&apos;+prev.getResponseDataAsString());
 
-var linkedListFoundElements = response.results[0].data.length;
-var linkedListInsertElements = vars.get(&quot;amountThreadsLinkedList&quot;) * vars.get(&quot;amountLoopsLinkedList&quot;) + 1;
+var hit = response.results[0].data.length;
+var result = vars.get(&quot;result&quot;) == &quot;true&quot;;
 
-var failure = linkedListFoundElements != linkedListInsertElements;
-
-if(failure) {
+if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
     AssertionResult.setFailure(true);
-    AssertionResult.setFailureMessage(&quot;Found &quot; + linkedListFoundElements + &quot; and should be &quot; + linkedListInsertElements)
+    AssertionResult.setFailureMessage(&quot;Expected &quot; + result + &quot; as result for search, but found &quot; + hit)
 }
 </stringProp>
-            <stringProp name="scriptLanguage">javascript</stringProp>
           </BSFAssertion>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - get" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group: LinkedList - get long" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -2063,15 +2089,6 @@ if(failure) {
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">16</intProp>
-          </ResponseAssertion>
-          <hashTree/>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion: Right result" enabled="false">
-            <collectionProp name="Asserion.test_strings">
-              <stringProp name="71001929">${result}</stringProp>
-            </collectionProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
           <BSFAssertion guiclass="TestBeanGUI" testclass="BSFAssertion" testname="BSF Assertion" enabled="true">
