@@ -44,8 +44,8 @@ public class DataGenerator {
             generatePeople(pre+filePeople, i, 1000);
             generateCoreTest(pre+fileTasks, 2, pre+fileTalks, 2, pre+filePools, 2, pre+fileNotes, 2, pre+fileBugs, 3, pre+filePeople);
             generateWorkspaceTest(pre+fileWorkspaces, pre+fileWorkspaceItems, 3, pre+filePeople, pre+fileTasks);
-            generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, 500);
-            generateStuff(pre+fileStuffElement, pre+fileStuffRelation, 5, 4);
+            generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, 200);
+            generateStuff(pre+fileStuffElement, pre+fileStuffRelation, 5, 2);
         }
     }
 
@@ -210,7 +210,7 @@ public class DataGenerator {
             int elem2 = rand.nextInt(list.size());
 
             //sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "data\":[{\"row\":[" : "data\":[]").append(System.lineSeparator());
-            sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(System.lineSeparator());
+            sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(",").append(elem2 - elem1).append(System.lineSeparator());
         }
         saveIn(fileCompare, sb);
     }
