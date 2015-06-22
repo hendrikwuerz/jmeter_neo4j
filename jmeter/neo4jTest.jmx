@@ -11,7 +11,30 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Access AWS" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Access AWS intern" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="DatabaseIP" elementType="Argument">
+            <stringProp name="Argument.name">DatabaseIP</stringProp>
+            <stringProp name="Argument.value">172.31.8.205</stringProp>
+            <stringProp name="Argument.desc">IP of used Database (localhost, neo4j.poolingpeople.com, 172.17.42.1, ...)</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="DatabasePort" elementType="Argument">
+            <stringProp name="Argument.name">DatabasePort</stringProp>
+            <stringProp name="Argument.value">27474</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Port of database</stringProp>
+          </elementProp>
+          <elementProp name="CSVFileDir" elementType="Argument">
+            <stringProp name="Argument.name">CSVFileDir</stringProp>
+            <stringProp name="Argument.value">/input_data</stringProp>
+            <stringProp name="Argument.desc">Where CSV files can be found. When run in docker &quot;/input_data&quot; else &quot;.&quot;</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Access AWS extern" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="DatabaseIP" elementType="Argument">
             <stringProp name="Argument.name">DatabaseIP</stringProp>
