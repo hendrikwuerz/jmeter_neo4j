@@ -68,7 +68,7 @@ function start_servers() {
 	
 		# Start the server container
 		echo "Running:------------------------------------"
-		echo "docker run --cidfile ${LOGDIR}/cid  d  -p 0.0.0.0:${HOST_READ_PORT}:1099  -p 0.0.0.0:${HOST_WRITE_PORT}:60000  -v ${LOGDIR}:/logs  -v ${DATADIR}/${n}:/input_data  --name jmeter-server-${n}  ${SERVER_IMAGE}"
+		echo "docker run --cidfile ${LOGDIR}/cid  -d  -p 0.0.0.0:${HOST_READ_PORT}:1099  -p 0.0.0.0:${HOST_WRITE_PORT}:60000  -v ${LOGDIR}:/logs  -v ${DATADIR}/${n}:/input_data  --name jmeter-server-${n}  ${SERVER_IMAGE}"
 		echo "Run:------------------------------------"
 		
 		# !!! CHANGED -v ${DATADIR}:/input_data \ to -v ${DATADIR}/${n}:/input_data \
