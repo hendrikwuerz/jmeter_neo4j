@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.7" jmeter="2.12 r1636949">
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11.20140723">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -2167,7 +2167,7 @@ if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
             <idleTime>true</idleTime>
           </value>
         </objProp>
-        <stringProp name="filename">~/results_tree_error.jtl</stringProp>
+        <stringProp name="filename">/logs/results_tree_error.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree Success" enabled="true">
@@ -2205,7 +2205,7 @@ if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
             <idleTime>true</idleTime>
           </value>
         </objProp>
-        <stringProp name="filename">~/results_tree_success.jtl</stringProp>
+        <stringProp name="filename">/logs/results_tree_success.jtl</stringProp>
         <boolProp name="ResultCollector.success_only_logging">true</boolProp>
       </ResultCollector>
       <hashTree/>
@@ -2244,7 +2244,7 @@ if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
             <idleTime>true</idleTime>
           </value>
         </objProp>
-        <stringProp name="filename">~/results_tree_error.csv</stringProp>
+        <stringProp name="filename">/logs/results_tree_error.csv</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree Success CSV" enabled="true">
@@ -2282,7 +2282,7 @@ if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
             <idleTime>true</idleTime>
           </value>
         </objProp>
-        <stringProp name="filename">~/results_tree_success.csv</stringProp>
+        <stringProp name="filename">/logs/results_tree_success.csv</stringProp>
         <boolProp name="ResultCollector.success_only_logging">true</boolProp>
       </ResultCollector>
       <hashTree/>
@@ -2321,7 +2321,7 @@ if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
             <idleTime>true</idleTime>
           </value>
         </objProp>
-        <stringProp name="filename">~/results_time_error.jtl</stringProp>
+        <stringProp name="filename">/logs/results_time_error.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph Success" enabled="true">
@@ -2359,7 +2359,7 @@ if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
             <idleTime>true</idleTime>
           </value>
         </objProp>
-        <stringProp name="filename">~/results_time_success.jtl</stringProp>
+        <stringProp name="filename">/logs/results_time_success.jtl</stringProp>
         <boolProp name="ResultCollector.success_only_logging">true</boolProp>
       </ResultCollector>
       <hashTree/>
@@ -2398,7 +2398,7 @@ if(result &amp;&amp; hit == 0 || !result &amp;&amp; hit != 0) {
             <idleTime>true</idleTime>
           </value>
         </objProp>
-        <stringProp name="filename">~/results_time_graph_success.jtl</stringProp>
+        <stringProp name="filename">/logs/results_time_graph_success.jtl</stringProp>
         <stringProp name="RespTimeGraph.interval">5</stringProp>
         <intProp name="RespTimeGraph.graphtitlefondsize">5</intProp>
         <intProp name="RespTimeGraph.linestrockwidth">1</intProp>
