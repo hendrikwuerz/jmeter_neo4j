@@ -44,7 +44,7 @@ for server in "${array_remote_servers[@]}"; do
     ssh -i "${KEYFILE}" -o StrictHostKeyChecking=no -l ${USERNAME} ${server} "mkdir -p ~/jmeter/data"
 
     # copy test data
-    echo "scp -i \"${KEYFILE}\" -r ${DATA_DIR}/${COUNTER} ${USERNAME}@${server}:~/jmeter/data"
+    echo "scp -i \"${KEYFILE}\" ${DATA_DIR}/${COUNTER}/* ${USERNAME}@${server}:~/jmeter/data"
     scp -i "${KEYFILE}" ${DATA_DIR}/${COUNTER}/* ${USERNAME}@${server}:~/jmeter/data
 
     # copy test plan

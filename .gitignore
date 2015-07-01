@@ -4,3 +4,4 @@ directory
 JMeterNeo4jData.iml
 docker/hendrik/jmeter-master/jmeter_master_to_server
 jmeter/data*
+jmeter/results*
