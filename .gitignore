@@ -2,7 +2,5 @@
 out/*
 directory
 JMeterNeo4jData.iml
-jmeter/random_*
-jmeter/result*
-docker/data/tmp*
+docker/hendrik/jmeter-master/jmeter_master_to_server
 jmeter/data*
