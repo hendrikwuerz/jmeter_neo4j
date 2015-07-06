@@ -42,7 +42,7 @@ public class DataGenerator {
             dir.mkdirs();
             String pre = folder + (i+1) + "/" + filePrefix;
 
-            generatePeople(pre+filePeople, i, 10000);
+            generatePeople(pre+filePeople, i, 8000);
             generateCoreTest(pre+fileTasks, 2, pre+fileTalks, 2, pre+filePools, 2, pre+fileNotes, 2, pre+fileBugs, 3, pre+filePeople);
             generateWorkspaceTest(pre+fileWorkspaces, pre+fileWorkspaceItems, 3, pre+filePeople, pre+fileTasks);
             generateLinkedList(pre+fileLinkedList, pre+fileLinkedListCompare, pre+fileLinkedListCompareShort, 200);
@@ -222,8 +222,11 @@ public class DataGenerator {
             Random rand = new Random();
             int elem1 = rand.nextInt(list.size());
             int elem2 = Math.min(elem1 + 5 - rand.nextInt(11), list.size() - 1);
-
-            sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(",").append(elem2 - elem1).append(System.lineSeparator());
+            if(elem2 < 0 || elem1 == elem2) {
+                i--; //try again
+            } else {
+                sb.append(list.get(elem1).uuid).append(",").append(list.get(elem2).uuid).append(",").append(elem1 < elem2 ? "true" : "false").append(",").append(elem2 - elem1).append(System.lineSeparator());
+            }
         }
         saveIn(fileCompareShort, sb);
     }
