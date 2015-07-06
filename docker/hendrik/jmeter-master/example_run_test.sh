@@ -1,1 +1,1 @@
-./ssh_start_server.sh -k jmeter_master_to_server -d /home/hendrik/jmeter/data -t /home/hendrik/jmeter/neo4jTest.jmx  -R 52.18.47.138,52.18.17.219
+./ssh_start_server.sh -k jmeter_master_to_server -d /home/hendrik/jmeter/data -t /home/hendrik/jmeter/neo4jTest.jmx  -R 172.31.37.172,172.31.2.96,172.31.42.20
