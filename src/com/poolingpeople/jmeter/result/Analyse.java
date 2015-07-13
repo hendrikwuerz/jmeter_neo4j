@@ -14,7 +14,9 @@ import java.util.stream.Stream;
 public class Analyse {
 
     static String filename = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/results_tree_success_copy_long_run.csv";
-    static String minimizedFile = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/results_tree_success_copy_long_run.min.csv";
+
+    static String minimizedFolder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/min/";
+
     static String[] labels; // all labels in the csv file
 
     static HashMap<String, Integer> requests; // hash map to get index in other arrays for a label
@@ -35,7 +37,7 @@ public class Analyse {
         }
 
         // Minimize the input data to the passed amount of CSV lines
-        Minimize min = new Minimize(new File(minimizedFile), 2);
+        Minimize min = new Minimize(minimizedFolder, 2);
         try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
             lines.forEachOrdered(min::process);
         } catch (IOException e) {

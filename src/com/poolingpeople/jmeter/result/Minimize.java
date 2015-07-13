@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -16,19 +17,25 @@ import java.util.LinkedList;
 public class Minimize {
 
     HashMap<String, LinkedList<Line>> pendingLines;
-    File destination;
+    String destinationFolder;
     int groupSize;
 
     /**
      * Minimizes multiple lines to one line
-     * @param destination
-     *      The file to write the merged lines
+     * @param destinationFolder
+     *      The folder to write the merged lines
      * @param groupSize
      *      How many lines will be merged to one line
      */
-    public Minimize(File destination, int groupSize) {
+    public Minimize(String destinationFolder, int groupSize) {
+        // clean destination folder
+        File folder = new File(destinationFolder);
+        if(!folder.exists()) folder.mkdir();
+        final File[] files = folder.listFiles();
+        Arrays.stream(files).forEach(file -> file.delete());
+
         pendingLines = new HashMap<>();
-        this.destination = destination;
+        this.destinationFolder = destinationFolder;
         this.groupSize = groupSize;
     }
 
@@ -70,7 +77,7 @@ public class Minimize {
      *      The line to be exported
      */
     private void export(Line line) {
-
+        File destination = new File(destinationFolder + line.label + ".csv");
         if(!destination.exists()) try {
             destination.createNewFile();
         } catch (IOException e) {
