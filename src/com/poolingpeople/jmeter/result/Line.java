@@ -1,11 +1,12 @@
 package com.poolingpeople.jmeter.result;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 
 /**
  * Created by hendrik on 13.07.15.
  */
-public class Line {
+public class Line implements Comparator<Line>, Comparable<Line> {
 
     long timestamp = -1;
     int elapsed = -1;
@@ -116,4 +117,13 @@ public class Line {
         return sb.toString();
     }
 
+    @Override
+    public int compareTo(Line line) {
+        return compare(this, line);
+    }
+
+    @Override
+    public int compare(Line line1, Line line2) {
+        return Long.compare(line1.timestamp, line2.timestamp);
+    }
 }

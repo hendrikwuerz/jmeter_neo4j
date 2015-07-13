@@ -21,17 +21,21 @@ public class Minimize {
     HashMap<String, Integer> groupSize;
     String destinationFolder;
 
+    HashMap<String, LinkedList<Line>> sortedElements; // the minimized results in sorted order
+
     /**
      * Minimizes multiple lines to one line
      * @param destinationFolder
      *      The folder to write the merged lines
-     * @param labels
+     * @param analyse
      *      statistic data: How many requests are available for one label
+     * @param maxSize
+     *      ca amount of result data
      */
-    public Minimize(String destinationFolder, HashMap<String, Label> labels, int maxSize) {
+    public Minimize(String destinationFolder, Analyse analyse, int maxSize) {
         this(destinationFolder);
         // calc how many requests have to be grouped for each label so maxSize is never exceeded
-        labels.forEach( (key, value) -> groupSize.put(key, Math.round((float)value.requests / maxSize)) );
+        analyse.labels.forEach( (key, value) -> groupSize.put(key, Math.round((float)value.requests / maxSize)) );
     }
 
     /**
@@ -83,8 +87,9 @@ public class Minimize {
         if(pendingLines.containsKey(line.label)) { // existing pending line for this label
             LinkedList<Line> list = pendingLines.get(line.label);
             list.add(line);
-            if(groupSize.getOrDefault(line.label, groupSizeDefault) <= list.size()) { // merge finished -> export
-                export(Line.merge(list));
+            if(groupSize.getOrDefault(line.label, groupSizeDefault) <= list.size()) { // merge finished -> sortedElements
+                Line mergedLine = Line.merge(list);
+                copyToSortedElements(mergedLine);
                 pendingLines.remove(line.label);
             }
         } else { // create a new pending line for this label with the passed line
@@ -94,12 +99,26 @@ public class Minimize {
         }
     }
 
+    private void copyToSortedElements(Line line) {
+        // add to final hash map
+        if(sortedElements.containsKey(line.label)) {
+            sortedElements.get(line.label).push(line);
+        } else {
+            LinkedList<Line> l = new LinkedList<>();
+            l.push(line);
+            sortedElements.put(line.label, l);
+        }
+    }
+
     /**
      * print all data in pending lines to the files, also if they have not reached their group size
      */
-    public void exportAll() {
-        pendingLines.forEach( (key, list) -> export(Line.merge(list)) );
+    public void finishMinimizing() {
+
+        pendingLines.forEach( (key, list) -> copyToSortedElements(Line.merge(list)) );
         pendingLines.clear();
+
+        sortedElements.forEach( (key, list) -> list.stream().sorted().forEach(this::export) );
     }
 
     /**
