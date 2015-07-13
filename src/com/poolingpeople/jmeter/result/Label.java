@@ -9,21 +9,34 @@ public class Label {
 
     String name;
     int requests;
-    int elapsed;
+
+    int elapsedSum;
+    int elapsedMin;
+    int elapsedMax;
 
     public Label(String name) {
         this.name = name;
         requests = 0;
-        elapsed = 0;
+        elapsedSum = 0;
+        elapsedMin = -1;
+        elapsedMax = -1;
     }
 
     public void process(Line line) {
         requests++;
-        elapsed += line.elapsed;
+        elapsedSum += line.elapsed;
+        if(line.elapsed < elapsedMin || elapsedMin == -1) {
+            elapsedMin = line.elapsed;
+        }
+        if(line.elapsed > elapsedMax || elapsedMax == -1) {
+            elapsedMax = line.elapsed;
+        }
     }
 
     @Override
     public String toString() {
-        return name + ": " + requests + " Requests" + System.lineSeparator() + "Durchschnittlich " + (elapsed / requests) + " Millisekunden" + System.lineSeparator();
+        return name + ": " + requests + " Requests" + System.lineSeparator() +
+                "Durchschnittlich " + (elapsedSum / requests) + " Millisekunden" + System.lineSeparator() +
+                "Minimal " + elapsedMin + " Millisekunden" + System.lineSeparator();
     }
 }
