@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 public class Analyse {
 
     static String filename = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/results_tree_success_copy_long_run.csv";
+    static String minimizedFile = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/results_tree_success_copy_long_run.min.csv";
     static String[] labels; // all labels in the csv file
 
     static HashMap<String, Integer> requests; // hash map to get index in other arrays for a label
@@ -26,13 +27,22 @@ public class Analyse {
         amountRequests = new int[requests.size()];
         sumResponseTime = new int[requests.size()];
 
-        // read each line
+        // read and process each line
         try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
             lines.forEachOrdered(Analyse::process);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        // Minimize the input data to the passed amount of CSV lines
+        Minimize min = new Minimize(new File(minimizedFile), 2);
+        try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
+            lines.forEachOrdered(min::process);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Print results
         for(int i = 0; i < labels.length; i++) {
             System.out.println(labels[i] + ": " + amountRequests[i] + " Requests");
             System.out.println("Durchschnittlich: " + (sumResponseTime[i] / amountRequests[i]) + " Millisekunden");
@@ -41,6 +51,12 @@ public class Analyse {
 
     }
 
+    /**
+     * Creates a HashMap with all all labels and their index in the other arrays
+     * Fills the "labels" instance variable
+     * @return
+     *      The HashMap with the labels and their index
+     */
     public static HashMap<String, Integer> getLabels() {
         // read each line
         LinkedList<String> labels = new LinkedList<>();
@@ -59,6 +75,16 @@ public class Analyse {
         }
         return requests;
     }
+
+    /**
+     * checks the passed line and add the label if it is not already known
+     * @param line
+     *      The line to be checked
+     * @param labels
+     *      All already knows labels
+     * @return
+     *      The new list with labels. Maybe a new lables was added
+     */
     private static LinkedList<String> checkAndInsertNewLabel(String line, LinkedList<String> labels) {
         String[] values = line.split(",", -1);
         if(!labels.contains(values[2])) { // new label
@@ -67,6 +93,11 @@ public class Analyse {
         return labels;
     }
 
+    /**
+     * processes the passed line and evaluate the values for the wished results
+     * @param line
+     *      The line to be processed
+     */
     public static void process(String line) {
         String[] values = line.split(",", -1);
 
