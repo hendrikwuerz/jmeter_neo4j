@@ -83,7 +83,7 @@ public class Minimize {
         if(pendingLines.containsKey(line.label)) { // existing pending line for this label
             LinkedList<Line> list = pendingLines.get(line.label);
             list.add(line);
-            if(groupSize.getOrDefault(line.label, groupSizeDefault) == list.size()) { // merge finished -> export
+            if(groupSize.getOrDefault(line.label, groupSizeDefault) <= list.size()) { // merge finished -> export
                 export(Line.merge(list));
                 pendingLines.remove(line.label);
             }
@@ -92,6 +92,14 @@ public class Minimize {
             list.add(line);
             pendingLines.put(line.label, list);
         }
+    }
+
+    /**
+     * print all data in pending lines to the files, also if they have not reached their group size
+     */
+    public void exportAll() {
+        pendingLines.forEach( (key, list) -> export(Line.merge(list)) );
+        pendingLines.clear();
     }
 
     /**

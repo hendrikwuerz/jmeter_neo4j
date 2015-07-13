@@ -37,6 +37,7 @@ public class Analyse {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        min.exportAll();
 
         // Print results
         labels.forEach( (key, value) -> System.out.println(value) );
