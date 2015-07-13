@@ -17,8 +17,22 @@ import java.util.LinkedList;
 public class Minimize {
 
     HashMap<String, LinkedList<Line>> pendingLines;
+    int groupSizeDefault = 2; // Will be used if "groupSize" does not contain a value for a label
+    HashMap<String, Integer> groupSize;
     String destinationFolder;
-    int groupSize;
+
+    /**
+     * Minimizes multiple lines to one line
+     * @param destinationFolder
+     *      The folder to write the merged lines
+     * @param labels
+     *      statistic data: How many requests are available for one label
+     */
+    public Minimize(String destinationFolder, HashMap<String, Label> labels, int maxSize) {
+        this(destinationFolder);
+        // calc how many requests have to be grouped for each label so maxSize is never exceeded
+        labels.forEach( (key, value) -> groupSize.put(key, Math.round((float)value.requests / maxSize)) );
+    }
 
     /**
      * Minimizes multiple lines to one line
@@ -28,17 +42,26 @@ public class Minimize {
      *      How many lines will be merged to one line
      */
     public Minimize(String destinationFolder, int groupSize) {
+        this(destinationFolder);
+        this.groupSizeDefault = groupSize;
+    }
+
+    private Minimize(String destinationFolder) {
         // clean destination folder
+        cleanFolder(destinationFolder);
+
+        this.destinationFolder = destinationFolder;
+        this.pendingLines = new HashMap<>();
+        this.groupSize = new HashMap<>();
+    }
+
+
+    private void cleanFolder(String destinationFolder) {
         File folder = new File(destinationFolder);
         if(!folder.exists()) folder.mkdir();
         final File[] files = folder.listFiles();
         Arrays.stream(files).forEach(file -> file.delete());
-
-        pendingLines = new HashMap<>();
-        this.destinationFolder = destinationFolder;
-        this.groupSize = groupSize;
     }
-
 
     /**
      * get a new line to be merged with others with the same label
@@ -60,7 +83,7 @@ public class Minimize {
         if(pendingLines.containsKey(line.label)) { // existing pending line for this label
             LinkedList<Line> list = pendingLines.get(line.label);
             list.add(line);
-            if(list.size() == groupSize) { // merge finished -> export
+            if(groupSize.getOrDefault(line.label, groupSizeDefault) == list.size()) { // merge finished -> export
                 export(Line.merge(list));
                 pendingLines.remove(line.label);
             }

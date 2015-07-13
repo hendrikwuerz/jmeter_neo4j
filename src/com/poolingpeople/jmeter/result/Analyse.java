@@ -31,7 +31,7 @@ public class Analyse {
         }
 
         // Minimize the input data to the passed amount of CSV lines
-        Minimize min = new Minimize(minimizedFolder, 2);
+        Minimize min = new Minimize(minimizedFolder, labels, 1000);
         try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
             lines.forEachOrdered(min::process);
         } catch (IOException e) {
