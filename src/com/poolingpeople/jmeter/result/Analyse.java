@@ -17,17 +17,11 @@ public class Analyse {
 
     static String minimizedFolder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/min/";
 
-    static String[] labels; // all labels in the csv file
-
-    static HashMap<String, Integer> requests; // hash map to get index in other arrays for a label
-    static int[] amountRequests; // amount of request send with a label
-    static int[] sumResponseTime; // the sum of all response times of the requests with a label
+    static HashMap<String, Label> labels;
 
     public static void main(String[] args) {
 
-        requests = getLabels();
-        amountRequests = new int[requests.size()];
-        sumResponseTime = new int[requests.size()];
+        labels = new HashMap<>();
 
         // read and process each line
         try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
@@ -45,76 +39,29 @@ public class Analyse {
         }
 
         // Print results
-        for(int i = 0; i < labels.length; i++) {
-            System.out.println(labels[i] + ": " + amountRequests[i] + " Requests");
-            System.out.println("Durchschnittlich: " + (sumResponseTime[i] / amountRequests[i]) + " Millisekunden");
-            System.out.println();
-        }
+        labels.forEach( (key, value) -> System.out.println(value) );
 
-    }
 
-    /**
-     * Creates a HashMap with all all labels and their index in the other arrays
-     * Fills the "labels" instance variable
-     * @return
-     *      The HashMap with the labels and their index
-     */
-    public static HashMap<String, Integer> getLabels() {
-        // read each line
-        LinkedList<String> labels = new LinkedList<>();
-        try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
-            lines.forEachOrdered(line -> checkAndInsertNewLabel(line, labels));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        // create HashMap and Array
-        Analyse.labels = new String[labels.size()];
-        HashMap<String, Integer> requests = new HashMap<>();
-        for(int i = 0; i < labels.size(); i++) {
-            requests.put(labels.get(i), i);
-            Analyse.labels[i] = labels.get(i);
-        }
-        return requests;
-    }
-
-    /**
-     * checks the passed line and add the label if it is not already known
-     * @param line
-     *      The line to be checked
-     * @param labels
-     *      All already knows labels
-     * @return
-     *      The new list with labels. Maybe a new lables was added
-     */
-    private static LinkedList<String> checkAndInsertNewLabel(String line, LinkedList<String> labels) {
-        String[] values = line.split(",", -1);
-        if(!labels.contains(values[2])) { // new label
-            labels.add(values[2]);
-        }
-        return labels;
     }
 
     /**
      * processes the passed line and evaluate the values for the wished results
-     * @param line
-     *      The line to be processed
+     * @param lineString
+     *      The line to be processed as a String
      */
-    public static void process(String line) {
-        String[] values = line.split(",", -1);
+    public static void process(String lineString) {
 
-        int type = requests.getOrDefault(values[2], -1);
-        if(type < 0) {
-            System.out.println("MIST " + values[2] + " not found");
-            return;
+        Line line = new Line(lineString);
+        Label label;
+        if(labels.containsKey(line.label)) {
+            label = labels.get(line.label);
+        } else {
+            label = new Label(line.label);
+            labels.put(line.label, label);
         }
 
-        try {
-            amountRequests[type]++;
-            sumResponseTime[type] += Integer.parseInt(values[1]);
-        } catch (NumberFormatException e) {
-            // Ignore everything that is not a number
-        }
+        label.process(line);
     }
 
 }
