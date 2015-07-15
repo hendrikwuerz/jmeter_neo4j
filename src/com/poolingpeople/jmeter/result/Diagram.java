@@ -34,16 +34,18 @@ public class Diagram {
         SVGImage image = new SVGImage(width, height);
 
         // factors mapping the timestamp to x-coordinates an the elapsed time to y-coordinates
-        double factorWidth = (double) width / (label.timestampMax - label.timestampMin);
-        double factorHeight = (double) height / (label.elapsedMax - label.elapsedMin);
+        double factorWidth = (double) width / label.requests;
+        double factorHeight = (double) height / label.elapsedMax;
 
+        int[] counter = {0};
         List<int[]> points = lines.stream()
-                .map( line -> {
-                    int x = (int)((line.timestamp - label.timestampMin) * factorWidth);
-                    int y = (int)((line.elapsed - label.elapsedMin) * factorHeight);
+                .map(line -> {
+                    int x = (int) (counter[0] * factorWidth);
+                    int y = (int) (line.elapsed * factorHeight);
                     // mirror y
                     y = (y - height / 2) * -1 + height / 2;
-                    return new int[]{x,y};
+                    counter[0]++;
+                    return new int[]{x, y};
                 })
                 .collect(Collectors.toList());
 
