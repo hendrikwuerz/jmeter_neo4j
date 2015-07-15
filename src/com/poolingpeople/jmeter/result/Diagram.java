@@ -38,13 +38,17 @@ public class Diagram {
         double factorHeight = (double) height / (label.elapsedMax - label.elapsedMin);
 
         List<int[]> points = lines.stream()
-                .map( line -> new int[]{
-                        (int)((line.timestamp - label.timestampMin) * factorWidth),
-                        (int)((line.elapsed - label.elapsedMin) * factorHeight)
+                .map( line -> {
+                    int x = (int)((line.timestamp - label.timestampMin) * factorWidth);
+                    int y = (int)((line.elapsed - label.elapsedMin) * factorHeight);
+                    // mirror y
+                    y = (y - height / 2) * -1 + height / 2;
+                    return new int[]{x,y};
                 })
                 .collect(Collectors.toList());
 
-        image.addPoint(points);
+        //image.addPoint(points);
+        image.addPath(points);
         image.export(destinationFolder + label.name + ".svg");
     }
 }

@@ -1,14 +1,9 @@
 package com.poolingpeople.jmeter.result;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -29,9 +24,10 @@ public class SVGImage {
         elements = new StringBuilder();
     }
 
-    public void addPath(LinkedList<int[]> points) {
+    public void addPath(List<int[]> points) {
         StringBuilder sb = new StringBuilder();
-        int[] firstPoint = points.pop();
+        int[] firstPoint = points.get(0);
+        points.remove(0);
         sb.append("M " + firstPoint[0] + "," + firstPoint[1] + " L");
         points.forEach( p -> sb.append(" " + p[0] + "," + p[1]));
 
