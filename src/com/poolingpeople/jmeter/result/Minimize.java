@@ -1,15 +1,9 @@
 package com.poolingpeople.jmeter.result;
 
-import javafx.collections.transformation.SortedList;
-
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.stream.Stream;
 
@@ -24,8 +18,8 @@ public class Minimize {
     LinkedList<Line> pendingLines;
     LinkedList<Line> minimizedLines; // the minimized results in sorted order
 
-    public static LinkedList<Line> minimize(File sourceFile, String destinationFolder, Analyse analyse, int maxSize) {
-        Minimize m = new Minimize(destinationFolder, analyse, maxSize);
+    public static LinkedList<Line> minimize(File sourceFile, String destinationFolder, int requests, int maxSize) {
+        Minimize m = new Minimize(destinationFolder, requests, maxSize);
 
         // read and process each line
         try (Stream<String> lines = Files.lines(sourceFile.toPath(), Charset.defaultCharset())) {
@@ -44,14 +38,14 @@ public class Minimize {
      * Minimizes multiple lines to one line
      * @param destinationFolder
      *      The folder to write the merged lines
-     * @param analyse
+     * @param requests
      *      statistic data: How many requests are available for one label
      * @param maxSize
      *      ca amount of result data
      */
-    public Minimize(String destinationFolder, Analyse analyse, int maxSize) {
+    public Minimize(String destinationFolder, int requests, int maxSize) {
         // calc how many requests have to be grouped for each label so maxSize is never exceeded
-        this(destinationFolder, Math.round((float)analyse.label.requests / maxSize));
+        this(destinationFolder, Math.round((float) requests / maxSize));
     }
 
     /**

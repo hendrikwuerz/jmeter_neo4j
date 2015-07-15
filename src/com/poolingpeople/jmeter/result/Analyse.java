@@ -1,9 +1,9 @@
 package com.poolingpeople.jmeter.result;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.stream.Stream;
@@ -13,62 +13,47 @@ import java.util.stream.Stream;
  */
 public class Analyse {
 
-    File data;
-    boolean loadFullList;
     LinkedList<Line> list;
     Label label;
 
+
     // start analyse from lines
     public Analyse(LinkedList<Line> list) {
-        this.loadFullList = false;
         this.list = list;
         this.label = new Label(list.getFirst().label);
 
-        list.stream().forEach(this::process);
+        // evaluate all data in label
+        list.stream().forEach(label::process);
+
+        // get global statistic data
+        // calc median
+        int size = list.size();
+        // sort list after elapsed time to get the median
+        list.sort( (l1, l2) -> Integer.compare(l1.elapsed, l2.elapsed));
+        if(size % 2 == 0) {
+            label.setElapsedMedian((list.get((size+1) / 2 - 1).elapsed + list.get((size+1) / 2 - 1).elapsed) / 2);
+        } else {
+            label.setElapsedMedian(list.get( (size+1) / 2 - 1).elapsed);
+        }
     }
 
-    // start analyse from file
-    public Analyse(File data, boolean loadFullList) {
-        this.data = data;
-        this.loadFullList = loadFullList;
-        analyse();
-    }
-
-    public void analyse() {
-        // read and process each line
-        try (Stream<String> lines = Files.lines(data.toPath(), Charset.defaultCharset())) {
-            lines.forEachOrdered(this::process);
+    public static int countLines(File file) {
+        int lines = 0;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            while (reader.readLine() != null) lines++;
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return lines;
     }
 
-    /**
-     * processes the passed line and evaluate the values for the wished results
-     * @param lineString
-     *      The line to be processed as a String
-     */
-    public void process(String lineString) {
-       process(new Line(lineString));
-    }
-
-    /**
-     * processes the passed line and evaluate the values for the wished results
-     * @param line
-     *      The line to be processed
-     */
-    public void process(Line line) {
-
-        // remember this line only if flag set
-        if(loadFullList) {
-            list.add(line);
-        }
-
-        if(label == null) { // first line -> now label is known
-            label = new Label(line.label);
-        }
-
-        label.process(line);
+    @Override
+    public String toString() {
+        return "Analyse for " + label.name + System.lineSeparator() +
+                "Based on " + list.size() + " Elements" + System.lineSeparator() +
+                label.toString();
     }
 
 }

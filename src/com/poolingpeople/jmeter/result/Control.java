@@ -26,9 +26,10 @@ public class Control {
         File folder = new File(splitFolder);
         Arrays.stream(folder.listFiles()).forEach(file -> { // Handle each label
 
-            Analyse fullAnalyse = new Analyse(file, false); // do not remember all data, only get statistics
+            LinkedList<Line> sortedLines = Minimize.minimize(file, minimizedFolder, Analyse.countLines(file), 5000);
 
-            LinkedList<Line> sortedLines = Minimize.minimize(file, minimizedFolder, fullAnalyse, 1000);
+            Analyse analyse = new Analyse(sortedLines);
+            System.out.println(analyse.toString() + System.lineSeparator());
 
             new Diagram(sortedLines, minimizedFolder);
 
