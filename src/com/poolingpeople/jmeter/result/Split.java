@@ -13,8 +13,6 @@ public class Split {
 
     public static void split(String filename, String destinationFolder) {
 
-        Util.cleanFolder(destinationFolder);
-
         // read and process each line
         try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
             lines.forEachOrdered( line -> Util.exportLine(new Line(line), destinationFolder));

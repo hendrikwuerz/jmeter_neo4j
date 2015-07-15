@@ -67,9 +67,6 @@ public class Minimize {
     }
 
     private Minimize(String destinationFolder) {
-        // clean destination folder
-        Util.cleanFolder(destinationFolder);
-
         this.destinationFolder = destinationFolder;
         this.pendingLines = new LinkedList<>();
         this.minimizedLines = new LinkedList<>();

@@ -1,13 +1,8 @@
 package com.poolingpeople.jmeter.result;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.stream.Stream;
 
 /**
  * Created by hendrik on 13.07.15.
@@ -21,6 +16,10 @@ public class Control {
     static String minimizedFolder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/min/";
 
     public static void main(String[] args) {
+
+        // clean destination folder
+        Util.cleanFolder(splitFolder);
+        Util.cleanFolder(minimizedFolder);
 
         Split.split(filename, splitFolder);
 
