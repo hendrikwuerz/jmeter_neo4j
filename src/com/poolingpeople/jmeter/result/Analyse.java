@@ -13,82 +13,35 @@ import java.util.stream.Stream;
  */
 public class Analyse {
 
-    String filename;
+    File data;
     boolean loadFullList;
-    HashMap<String, Label> labels;
     LinkedList<Line> list;
+    Label label;
 
-    public Analyse(String filename, boolean loadFullList) {
-        this.filename = filename;
+    // start analyse from lines
+    public Analyse(LinkedList<Line> list) {
+        this.loadFullList = false;
+        this.list = list;
+        this.label = new Label(list.getFirst().label);
+
+        list.stream().forEach(this::process);
+    }
+
+    // start analyse from file
+    public Analyse(File data, boolean loadFullList) {
+        this.data = data;
         this.loadFullList = loadFullList;
         analyse();
     }
 
-    public HashMap<String, Label> analyse() {
-        labels = new HashMap<>();
-
+    public void analyse() {
         // read and process each line
-        try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
+        try (Stream<String> lines = Files.lines(data.toPath(), Charset.defaultCharset())) {
             lines.forEachOrdered(this::process);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return labels;
     }
-
-    /*
-    public static void main(String[] args) {
-
-        labels = new HashMap<>();
-
-        // read and process each line
-        try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
-            lines.forEachOrdered(Analyse::process);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Minimize the input data to the passed amount of CSV lines
-        Minimize min = new Minimize(minimizedFolder, labels, 1000);
-        try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
-            lines.forEachOrdered(min::process);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        min.finishMinimizing();
-
-        // Print results
-        labels.forEach( (key, value) -> System.out.println(value) );
-
-        int width = 20000;
-        int height = 10000;
-        labels.forEach((key, value) -> { // loop different labels
-
-            SVGImage image = new SVGImage(width, height);
-            LinkedList<int[]> points = new LinkedList<>();
-
-            double factorWidth = (double) width / (value.timestampMax - value.timestampMin);
-            double factorHeight = (double) height / (value.elapsedMax - value.elapsedMin);
-
-            //try (Stream<String> lines = Files.lines(new File(minimizedFolder + key + ".csv").toPath(), Charset.defaultCharset())) {
-            try (Stream<String> lines = Files.lines(new File(filename).toPath(), Charset.defaultCharset())) {
-                lines.forEachOrdered(line -> {
-                    Line l = new Line(line);
-                    int x = (int) ((l.timestamp - value.timestampMin) * factorWidth);
-                    //int y = (int)(((l.elapsed - value.elapsedMin) * factorHeight - height / 2) * -1 + height / 2);
-                    int y = (int) ((l.elapsed - value.elapsedMin) * factorHeight);
-                    if (l.label.equals(key)) points.add(new int[]{x, y});
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            image.addPoint(points);
-            image.export("/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/min/" + key + ".svg");
-        });
-
-    }
-    */
 
     /**
      * processes the passed line and evaluate the values for the wished results
@@ -96,20 +49,23 @@ public class Analyse {
      *      The line to be processed as a String
      */
     public void process(String lineString) {
+       process(new Line(lineString));
+    }
 
-        Line line = new Line(lineString);
+    /**
+     * processes the passed line and evaluate the values for the wished results
+     * @param line
+     *      The line to be processed
+     */
+    public void process(Line line) {
 
         // remember this line only if flag set
         if(loadFullList) {
             list.add(line);
         }
 
-        Label label;
-        if(labels.containsKey(line.label)) {
-            label = labels.get(line.label);
-        } else {
+        if(label == null) { // first line -> now label is known
             label = new Label(line.label);
-            labels.put(line.label, label);
         }
 
         label.process(line);

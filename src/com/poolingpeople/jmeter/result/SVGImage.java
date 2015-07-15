@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by hendrik on 13.07.15.
@@ -40,7 +41,7 @@ public class SVGImage {
 
     }
 
-    public void addPoint(LinkedList<int[]> points) {
+    public void addPoint(List<int[]> points) {
         StringBuilder sb = new StringBuilder();
 
         points.forEach( p -> elements.append("<circle cx=\"" + p[0] + "\" cy=\"" + p[1] + "\" r=\"10\" stroke=\"rgb(0,69,134)\" stroke-width=\"80\" fill=\"black\" />").append(System.lineSeparator()) );
