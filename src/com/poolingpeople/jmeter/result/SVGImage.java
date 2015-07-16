@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -24,12 +25,19 @@ public class SVGImage {
         elements = new StringBuilder();
     }
 
+    public void addPath(int[] pointA, int[] pointB) {
+        LinkedList<int[]> tmp = new LinkedList<>();
+        tmp.add(pointA);
+        tmp.add(pointB);
+        addPath(tmp);
+    }
+
     public void addPath(List<int[]> points) {
         StringBuilder sb = new StringBuilder();
         int[] firstPoint = points.get(0);
         points.remove(0);
         sb.append("M " + firstPoint[0] + "," + firstPoint[1] + " L");
-        points.forEach( p -> sb.append(" " + p[0] + "," + p[1]));
+        points.forEach(p -> sb.append(" " + p[0] + "," + p[1]));
 
         elements.append("<path fill=\"none\" stroke=\"rgb(0,69,134)\" stroke-width=\"80\" stroke-linejoin=\"round\" d=\"")
                 .append(sb)
@@ -41,8 +49,21 @@ public class SVGImage {
     public void addPoint(List<int[]> points) {
         StringBuilder sb = new StringBuilder();
 
-        points.forEach( p -> elements.append("<circle cx=\"" + p[0] + "\" cy=\"" + p[1] + "\" r=\"10\" stroke=\"rgb(0,69,134)\" stroke-width=\"80\" fill=\"black\" />").append(System.lineSeparator()) );
+        points.forEach(p -> elements.append("<circle cx=\"" + p[0] + "\" cy=\"" + p[1] + "\" r=\"10\" stroke=\"rgb(0,69,134)\" stroke-width=\"80\" fill=\"black\" />").append(System.lineSeparator()));
 
+    }
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @param textAnchor
+     *          Alignment: start | middle | end
+     * @param fontSize
+     * @param text
+     */
+    public void addText(int x, int y, String textAnchor, int fontSize, String text) {
+        elements.append("<text text-anchor=\"" + textAnchor + "\" x=\"" + x + "\" y=\"" + y + "\" font-family=\"Verdana\" font-size=\"" + fontSize + "\" fill=\"blue\" >" + text + "</text>").append(System.lineSeparator());
     }
 
     public void export(String file) {
@@ -56,8 +77,8 @@ public class SVGImage {
     @Override
     public String toString() {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n" +
-                "<svg width=\"160mm\" height=\"90mm\" viewBox=\"0 0 " + width + " " + height + "\" version=\"1.1\" baseProfile=\"tiny\" xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"28.222\" stroke-linejoin=\"round\" xml:space=\"preserve\"> \n" +
+                "<svg width=\"160mm\" height=\"90mm\" viewBox=\"0 0 " + width + " " + height + "\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.2\" baseProfile=\"tiny\" viewport-fill=\"red\"> \n" +
+                "<rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" fill=\"red\" stroke-width=\"0\"/>" +
                 elements.toString() +
                 "</svg>";
     }
