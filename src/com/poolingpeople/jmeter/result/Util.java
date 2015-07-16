@@ -61,6 +61,7 @@ public class Util {
             line.forEach(current -> {
                 try {
                     writer.write(current);
+                    writer.newLine();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
