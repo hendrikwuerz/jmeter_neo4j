@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -104,8 +107,13 @@ public class Minimize {
             pendingLines.clear();
         }
 
-        minimizedLines.sort( (l1, l2) -> l1.compareTo(l2));
+        // abort on empty list
+        if(minimizedLines.isEmpty()) return;
 
-        minimizedLines.stream().forEach( line -> Util.exportLine(line, destinationFolder) );
+        minimizedLines.sort(Line::compareTo);
+
+        String label = minimizedLines.getFirst().label;
+        List<String> lines = minimizedLines.stream().map(Line::toString).collect(Collectors.toList());
+        Util.exportLines(lines, label, destinationFolder);
     }
 }

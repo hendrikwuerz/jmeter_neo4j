@@ -28,24 +28,6 @@ public class Util {
         Arrays.stream(files).forEach(file -> file.delete());
     }
 
-
-    /**
-     * Appends the passed line to the file set with "destinationFolder"
-     * @param line
-     *      The line to be exported
-     * @param destinationFolder
-     *      The destination folder
-     */
-    public static void exportLine(Line line, String destinationFolder) {
-        File destination = prepareFileForExport(line.label, destinationFolder);
-        try (BufferedWriter writer = Files.newBufferedWriter(destination.toPath(), StandardCharsets.UTF_8, StandardOpenOption.APPEND)) {
-            writer.write(line.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     /**
      * Appends the passed lines to the file set with "destinationFolder" and label
      * @param line
