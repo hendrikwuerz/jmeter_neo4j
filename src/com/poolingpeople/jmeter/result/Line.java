@@ -91,6 +91,10 @@ public class Line implements Comparator<Line>, Comparable<Line> {
         return first;
     }
 
+    public static String getLabelFor(String line) {
+        return line.split(",", -1)[2];
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(timestamp).append(",")
