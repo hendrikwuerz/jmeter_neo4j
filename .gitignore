@@ -1,4 +1,5 @@
-.*
+.idea
+*.iml
 out/*
 directory
 JMeterNeo4jData.iml
