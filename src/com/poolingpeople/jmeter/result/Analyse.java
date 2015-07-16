@@ -21,19 +21,20 @@ public class Analyse {
     public Analyse(LinkedList<Line> list) {
         this.list = list;
         this.label = new Label(list.getFirst().label);
+        int size = list.size();
 
         // evaluate all data in label
         list.stream().forEach(label::process);
 
         // get global statistic data
         // calc median
-        int size = list.size();
+        LinkedList<Line> listElapsedSorted = (LinkedList<Line>)list.clone();
         // sort list after elapsed time to get the median
-        list.sort( (l1, l2) -> Integer.compare(l1.elapsed, l2.elapsed));
+        listElapsedSorted.sort( (l1, l2) -> Integer.compare(l1.elapsed, l2.elapsed));
         if(size % 2 == 0) {
-            label.setElapsedMedian((list.get((size+1) / 2 - 1).elapsed + list.get((size+1) / 2 - 1).elapsed) / 2);
+            label.setElapsedMedian((listElapsedSorted.get((size+1) / 2 - 1).elapsed + listElapsedSorted.get((size+1) / 2 - 1).elapsed) / 2);
         } else {
-            label.setElapsedMedian(list.get( (size+1) / 2 - 1).elapsed);
+            label.setElapsedMedian(listElapsedSorted.get( (size+1) / 2 - 1).elapsed);
         }
     }
 
