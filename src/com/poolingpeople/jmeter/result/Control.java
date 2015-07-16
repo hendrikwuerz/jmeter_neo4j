@@ -9,11 +9,11 @@ import java.util.LinkedList;
  */
 public class Control {
 
-    static String filename = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/results_tree_success_copy_long_run.csv";
+    static String filename = "D:\\_Homepage\\arbeit\\jmeter_neo4j\\jmeter\\logs\\logfile.csv";
 
-    static String splitFolder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/split/";
+    static String splitFolder = "D:\\_Homepage\\arbeit\\jmeter_neo4j\\jmeter\\logs\\split\\";
 
-    static String minimizedFolder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/min/";
+    static String minimizedFolder = "D:\\_Homepage\\arbeit\\jmeter_neo4j\\jmeter\\logs\\min\\";
 
     public static void main(String[] args) {
 
@@ -21,7 +21,10 @@ public class Control {
         Util.cleanFolder(splitFolder);
         Util.cleanFolder(minimizedFolder);
 
+        System.out.printf("Start splitting files");
+        long start = System.currentTimeMillis();
         Split.split(filename, splitFolder);
+        System.out.println("Needed " + (System.currentTimeMillis() - start) + "ms for splitting");
 
         File folder = new File(splitFolder);
         Arrays.stream(folder.listFiles()).forEach(file -> { // Handle each label

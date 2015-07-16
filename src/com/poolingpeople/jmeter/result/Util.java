@@ -40,6 +40,7 @@ public class Util {
         File destination = prepareFileForExport(line.label, destinationFolder);
         try (BufferedWriter writer = Files.newBufferedWriter(destination.toPath(), StandardCharsets.UTF_8, StandardOpenOption.APPEND)) {
             writer.write(line.toString());
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,6 +65,7 @@ public class Util {
                     e.printStackTrace();
                 }
             });
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
