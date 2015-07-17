@@ -1,5 +1,6 @@
 package com.poolingpeople.jmeter.result;
 
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -71,6 +72,11 @@ public class Util {
             e.printStackTrace();
         }
         return destination;
+    }
+
+    public static String getHexCode(Color color) {
+        String c = Integer.toHexString(color.getRGB());
+        return "#" + c.substring(2, c.length());
     }
 
 }
