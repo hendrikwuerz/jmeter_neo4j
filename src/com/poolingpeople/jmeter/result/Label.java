@@ -17,6 +17,7 @@ public class Label {
     int elapsedMin;
     int elapsedMax;
     int elapsedMedian;
+    int elapsed90Line;
 
     public Label(String name) {
         this.name = name;
@@ -54,14 +55,19 @@ public class Label {
         this.elapsedMedian = elapsedMedian;
     }
 
+    public void setElapsed90Line(int elapsed90Line) {
+        this.elapsed90Line = elapsed90Line;
+    }
+
     @Override
     public String toString() {
         return name + ": " + requests + " Requests" + System.lineSeparator() +
                 "Durchschnittlich " + (elapsedSum / requests) + " Millisekunden" + System.lineSeparator() +
-                "Minimal " + elapsedMin + " Millisekunden" + System.lineSeparator() +
-                "Maximal " + elapsedMax + " Millisekunden" + System.lineSeparator() +
-                "Median  " + elapsedMedian + " Millisekunden" + System.lineSeparator() +
-                "Minimal " + timestampMin + " Timestamp" + System.lineSeparator() +
-                "Maximal " + timestampMax + " Timestamp" + System.lineSeparator();
+                "Minimal  " + elapsedMin + " Millisekunden" + System.lineSeparator() +
+                "Maximal  " + elapsedMax + " Millisekunden" + System.lineSeparator() +
+                "Median   " + elapsedMedian + " Millisekunden" + System.lineSeparator() +
+                "90% Line " + elapsed90Line + " Millisekunden" + System.lineSeparator() +
+                "Minimal  " + timestampMin + " Timestamp" + System.lineSeparator() +
+                "Maximal  " + timestampMax + " Timestamp" + System.lineSeparator();
     }
 }
