@@ -32,9 +32,11 @@ public class Control {
         File folder = new File(splitFolder);
         Arrays.stream(folder.listFiles()).forEach(file -> { // Handle each label
 
-            LinkedList<Line> sortedLines = Minimize.minimize(file, minimizedFolder, Analyse.countLines(file), 5000);
+            int originalAmountRequests = Analyse.countLines(file);
 
-            Analyse analyse = new Analyse(sortedLines);
+            LinkedList<Line> sortedLines = Minimize.minimize(file, minimizedFolder, originalAmountRequests, 5000);
+
+            Analyse analyse = new Analyse(sortedLines, originalAmountRequests);
             System.out.println(analyse.toString() + System.lineSeparator());
 
             new Diagram(sortedLines, minimizedFolder, analyse);

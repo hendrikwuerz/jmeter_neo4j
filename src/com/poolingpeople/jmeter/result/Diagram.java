@@ -1,6 +1,7 @@
 package com.poolingpeople.jmeter.result;
 
 import java.awt.*;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -139,10 +140,14 @@ public class Diagram {
     private static void drawStatistics(SVGImage image, Analyse analyse, int diagramMargin, int statisticHeight) {
 
         int fontSize = 500;
-        int valuePadding = 2500; // padding of the values to the left
+
+        // elapsed time statistics
+        int valuePadding = 4000; // padding of the values to the left
 
         int row = 0;
         // title of data
+        image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Original Requests", Color.black);
+        row++;
         image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Requests", Color.black);
         row++;
         image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Average", Color.black);
@@ -158,16 +163,40 @@ public class Diagram {
 
         // values of data
         row = 0;
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.originalAmountRequests, Color.black);
+        row++;
         image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.requests, Color.black);
         row++;
-        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedAverage, Color.black);
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedAverage + "ms", Color.black);
         row++;
-        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMin, Color.black);
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMin + "ms", Color.black);
         row++;
-        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMax, Color.black);
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMax + "ms", Color.black);
         row++;
-        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMedian, Color.black);
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMedian + "ms", Color.black);
         row++;
-        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsed90Line, Color.black);
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsed90Line + "ms", Color.black);
+
+
+
+        // timestamp statistics
+        int blockPadding = valuePadding + 3500;
+        valuePadding = 4000;
+
+        // title of data
+        row = 0;
+        image.addText(diagramMargin + blockPadding, image.height - statisticHeight + row * fontSize, "start", fontSize, "Start timestamp", Color.black);
+        row++;
+        image.addText(diagramMargin + blockPadding, image.height - statisticHeight + row * fontSize, "start", fontSize, "End timestamp", Color.black);
+        row++;
+        image.addText(diagramMargin + blockPadding, image.height - statisticHeight + row * fontSize, "start", fontSize, "run time", Color.black);
+
+        // value of data
+        row = 0;
+        image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, (new Date(analyse.label.timestampMin)).toString(), Color.black);
+        row++;
+        image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, (new Date(analyse.label.timestampMax)).toString(), Color.black);
+        row++;
+        image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, (analyse.label.timestampMax - analyse.label.timestampMin) + "ms", Color.black);
     }
 }

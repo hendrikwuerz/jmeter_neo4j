@@ -13,12 +13,14 @@ public class Analyse {
 
     LinkedList<Line> list;
     Label label;
+    int originalAmountRequests;
 
 
     // start analyse from lines
-    public Analyse(LinkedList<Line> list) {
+    public Analyse(LinkedList<Line> list, int originalAmountRequests) {
         this.list = list;
         this.label = new Label(list.getFirst().label);
+        this.originalAmountRequests = originalAmountRequests;
         int size = list.size();
 
         // evaluate all data in label
