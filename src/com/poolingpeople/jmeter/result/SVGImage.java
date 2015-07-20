@@ -81,6 +81,11 @@ public class SVGImage {
 
     }
 
+
+    public void addText(int x, int y, String textAnchor, int fontSize, int text, Color color) {
+        addText(x, y, textAnchor, fontSize, String.valueOf(text), color);
+    }
+
     /**
      *
      * @param x

@@ -24,9 +24,6 @@ public class Diagram {
         this.lines = lines;
         this.destinationFolder = destinationFolder;
 
-        // get data for min max of passed lines
-        Label label = new Analyse(lines).label;
-
         // size of SVG image
         int diagramMargin = 200; // margin to the borders of the image
         int topicHeight = 1500; // height of the topic (name of diagram)
@@ -43,33 +40,34 @@ public class Diagram {
         // create image and list for points
         SVGImage image = new SVGImage(width, height);
 
+        // draw title
+        int realTopicSize = (int)(0.7 * topicHeight);
+        image.addText(diagramMargin, realTopicSize, "start", realTopicSize, analyse.label.name, Color.black);
+
         // factors mapping the timestamp to x-coordinates an the elapsed time to y-coordinates
-        double factorWidth = (double) (width - 2 * diagramMargin - numberPadding) / label.requests;
-        double factorHeight = (double) (diagramHeight) / label.elapsedMax;
+        double factorWidth = (double) (width - 2 * diagramMargin - numberPadding) / analyse.label.requests;
+        double factorHeight = (double) (diagramHeight) / analyse.label.elapsedMax;
 
         // calc position of the diagram points for the svg
         int[] counter = {0};
         List<int[]> points = lines.stream()
                 .map(line -> {
-                    int x = numberPadding + diagramMargin + (int) (counter[0] * factorWidth);
-                    int y = height - statisticHeight - numberPadding - diagramMargin - (int) (line.elapsed * factorHeight);
+                    int x = diagramMargin + numberPadding + (int) (counter[0] * factorWidth);
+                    int y = height - diagramMargin - statisticHeight - numberPadding - (int) (line.elapsed * factorHeight);
                     counter[0]++;
                     return new int[]{x, y};
                 })
                 .collect(Collectors.toList());
 
         // draw diagram
-        drawCoordinate(image, label.elapsedMax, 10, numberPadding, diagramMargin, topicHeight, statisticHeight);
+        drawCoordinate(image, analyse.label.elapsedMax, 10, numberPadding, diagramMargin, topicHeight, statisticHeight);
         image.addPath(points, lineWidth, lineColor);
 
-        // draw title
-        int realTopicSize = (int)(0.7 * topicHeight);
-        image.addText(diagramMargin, realTopicSize, "start", realTopicSize, analyse.label.name, Color.black);
-
         // draw statistic data
+        drawStatistics(image, analyse, diagramMargin, statisticHeight);
 
         // export to file
-        image.export(destinationFolder + label.name + ".svg");
+        image.export(destinationFolder + analyse.label.name + ".svg");
     }
 
     /**
@@ -122,5 +120,40 @@ public class Diagram {
         int y2 = image.height - diagramMargin - paddingBottom - (int)(0.8 * numberPadding);
         image.addPath(new int[]{x, y1}, new int[]{x, y2}, width, color);
         image.addText(x, y2 + (int)(0.3 * numberPadding), "end", fontSize, "0", color);
+    }
+
+    private static void drawStatistics(SVGImage image, Analyse analyse, int diagramMargin, int statisticHeight) {
+
+        int fontSize = 500;
+        int valuePadding = 2500; // padding of the values to the left
+
+        int row = 0;
+        // title of data
+        image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Requests", Color.black);
+        row++;
+        image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Average", Color.black);
+        row++;
+        image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Minimal", Color.black);
+        row++;
+        image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Maximal", Color.black);
+        row++;
+        image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "Median", Color.black);
+        row++;
+        image.addText(diagramMargin, image.height - statisticHeight + row * fontSize, "start", fontSize, "90% line", Color.black);
+
+
+        // values of data
+        row = 0;
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.requests, Color.black);
+        row++;
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedAverage, Color.black);
+        row++;
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMin, Color.black);
+        row++;
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMax, Color.black);
+        row++;
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsedMedian, Color.black);
+        row++;
+        image.addText(diagramMargin + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, analyse.label.elapsed90Line, Color.black);
     }
 }

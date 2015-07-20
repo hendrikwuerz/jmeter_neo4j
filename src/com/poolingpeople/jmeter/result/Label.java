@@ -14,6 +14,7 @@ public class Label {
     long timestampMax;
 
     int elapsedSum;
+    int elapsedAverage;
     int elapsedMin;
     int elapsedMax;
     int elapsedMedian;
@@ -49,6 +50,8 @@ public class Label {
         if(line.elapsed > elapsedMax || elapsedMax == -1) {
             elapsedMax = line.elapsed;
         }
+
+        elapsedAverage = (elapsedSum / requests);
     }
 
     public void setElapsedMedian(int elapsedMedian) {
@@ -62,7 +65,7 @@ public class Label {
     @Override
     public String toString() {
         return name + ": " + requests + " Requests" + System.lineSeparator() +
-                "Durchschnittlich " + (elapsedSum / requests) + " Millisekunden" + System.lineSeparator() +
+                "Durchschnittlich " + elapsedAverage + " Millisekunden" + System.lineSeparator() +
                 "Minimal  " + elapsedMin + " Millisekunden" + System.lineSeparator() +
                 "Maximal  " + elapsedMax + " Millisekunden" + System.lineSeparator() +
                 "Median   " + elapsedMedian + " Millisekunden" + System.lineSeparator() +
