@@ -226,5 +226,7 @@ public class Diagram {
         df.setTimeZone(TimeZone.getTimeZone("GMT"));
         String runTime = df.format(analyse.label.timestampMax - analyse.label.timestampMin);
         image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, runTime, Color.black);
+        row++;
+        image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, "(hh:mm:ss)", Color.black);
     }
 }
