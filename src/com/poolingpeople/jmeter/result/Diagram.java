@@ -1,10 +1,9 @@
 package com.poolingpeople.jmeter.result;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -215,7 +214,7 @@ public class Diagram {
         row++;
         image.addText(diagramMargin + blockPadding, image.height - statisticHeight + row * fontSize, "start", fontSize, "End timestamp", Color.black);
         row++;
-        image.addText(diagramMargin + blockPadding, image.height - statisticHeight + row * fontSize, "start", fontSize, "run time", Color.black);
+        image.addText(diagramMargin + blockPadding, image.height - statisticHeight + row * fontSize, "start", fontSize, "Run time", Color.black);
 
         // value of data
         row = 0;
@@ -223,6 +222,9 @@ public class Diagram {
         row++;
         image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, (new Date(analyse.label.timestampMax)).toString(), Color.black);
         row++;
-        image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, (analyse.label.timestampMax - analyse.label.timestampMin) + "ms", Color.black);
+        SimpleDateFormat df= new SimpleDateFormat("HH:mm:ss");
+        df.setTimeZone(TimeZone.getTimeZone("GMT"));
+        String runTime = df.format(analyse.label.timestampMax - analyse.label.timestampMin);
+        image.addText(diagramMargin + blockPadding + valuePadding, image.height - statisticHeight + row * fontSize, "start", fontSize, runTime, Color.black);
     }
 }
