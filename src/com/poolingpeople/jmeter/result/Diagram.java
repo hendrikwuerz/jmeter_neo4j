@@ -1,6 +1,8 @@
 package com.poolingpeople.jmeter.result;
 
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -81,7 +83,7 @@ public class Diagram {
         image.addPath(points, lineWidth, lineColor);
 
         // draw statistic data
-        drawStatistics(image, analyse, diagramMargin, statisticHeight);
+        drawStatistics();
 
         // export to file
         image.export(destinationFolder + analyse.label.name + ".svg");
@@ -133,11 +135,35 @@ public class Diagram {
         int x = diagramMargin + numberPadding;
         int y1 = diagramMargin + topicHeight;
         int y2 = image.height - diagramMargin - statisticHeight - (int)(0.8 * numberPadding);
+
+        // first line over full height
         image.addPath(new int[]{x, y1}, new int[]{x, y2}, width, color);
-        image.addText(x, y2 + (int)(0.3 * numberPadding), "end", fontSize, "0", color);
+
+        // all vertical lines after first one only on x-axis
+        y1 = image.height - diagramMargin - statisticHeight - (int)(1.3 * numberPadding);
+
+        int amountOfTimestamps = 5;
+        for(int i = 0; i < amountOfTimestamps; i++) {
+            // calc current time
+            long timestamp = this.lines.get(analyse.label.requests / amountOfTimestamps * i).timestamp;
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(timestamp);
+            String text = calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND) + ":" + calendar.get(Calendar.MILLISECOND);
+
+            // write time on current position
+            x = diagramMargin + numberPadding + i * (image.width - diagramMargin - numberPadding) / amountOfTimestamps;
+            image.addText(x, y2 + (int)(0.3 * numberPadding), "middle", fontSize, text, color);
+
+            // draw small line on current position
+            image.addPath(new int[]{x, y1}, new int[]{x, y2}, width, color);
+        }
     }
 
-    private static void drawStatistics(SVGImage image, Analyse analyse, int diagramMargin, int statisticHeight) {
+
+    /**
+     * adds the analysed data to the bottom of the svg image
+     */
+    private void drawStatistics() {
 
         int fontSize = 500;
 
