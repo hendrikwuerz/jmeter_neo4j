@@ -57,7 +57,6 @@ public class Analyse {
     @Override
     public String toString() {
         return "Analyse for " + label.name + System.lineSeparator() +
-                "Based on " + list.size() + " Elements" + System.lineSeparator() +
                 label.toString();
     }
 
