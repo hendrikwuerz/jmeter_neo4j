@@ -167,7 +167,7 @@ public class Diagram {
         int fontSize = 500;
 
         // elapsed time statistics
-        int valuePadding = 4000; // padding of the values to the left
+        int valuePadding = 5000; // padding of the values to the left
 
         int row = 0;
         // title of data
@@ -205,8 +205,8 @@ public class Diagram {
 
 
         // timestamp statistics
-        int blockPadding = valuePadding + 3500;
-        valuePadding = 4000;
+        int blockPadding = valuePadding + 6000;
+        valuePadding = 5000;
 
         // title of data
         row = 0;
