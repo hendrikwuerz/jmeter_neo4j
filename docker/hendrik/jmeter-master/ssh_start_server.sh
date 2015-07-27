@@ -97,7 +97,7 @@ echo "*** Clean up JMeter Servers ***"
 echo "*******************************"
 for server in "${array_remote_servers[@]}"; do
     # remove jmeter server docker containers
-    echo "ssh -i \"${KEYFILE}\" -o StrictHostKeyChecking=no -l ${USERNAME} ${server} \"${SCRIPT_START}\""
+    echo "ssh -i \"${KEYFILE}\" -o StrictHostKeyChecking=no -l ${USERNAME} ${server} \"${SCRIPT_STOP}\""
     ssh -i "${KEYFILE}" -o StrictHostKeyChecking=no -l ${USERNAME} ${server} "${SCRIPT_STOP}"
 
     # remove test files
