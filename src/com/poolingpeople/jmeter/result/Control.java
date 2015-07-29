@@ -14,6 +14,12 @@ public class Control {
         String splitFolder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/split/";
         String minimizedFolder = "/home/hendrik/dev/pooling-people/JMeter/Neo4j/JMeterNeo4jData/jmeter/logs/min/";
 
+        if(args.length > 0) {
+            filename = args[0];
+            splitFolder = args[1];
+            minimizedFolder = args[2];
+        }
+
         Control control = new Control(filename, splitFolder, minimizedFolder);
     }
 
@@ -43,6 +49,13 @@ public class Control {
      *          If no division of the input date is possible, the used number can be higher
      */
     public Control(String filename, String splitFolder, String minimizedFolder, int minimizationLevel) {
+
+        System.out.println("Starting analyse");
+        System.out.println("Filename:           " + filename);
+        System.out.println("Splitfolder:        " + splitFolder);
+        System.out.println("Minimized folder:   " + minimizedFolder);
+        System.out.println("Minimization level: " + minimizationLevel);
+
 
         // clean destination folder
         Util.cleanFolder(splitFolder);
