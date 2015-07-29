@@ -2,7 +2,6 @@ FROM hendrik/jmeter-base
 
 # Create mount point for script, data and log files
 VOLUME ["/scripts"]
-VOLUME ["/input_data"]
 VOLUME ["/logs"]
 
 # Use a predefined configuration.  This sets the contract for connecting to jmeter servers.

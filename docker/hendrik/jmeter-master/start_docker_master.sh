@@ -3,7 +3,6 @@ docker run \
 -p 1099:1099 \
 -p 4445:4445 \
 -v /home/hendrik/jmeter:/scripts \
--v /home/hendrik/jmeter/data/2:/input_data \
 -v /home/hendrik/jmeter/logs:/logs \
 hendrik/jmeter-master \
 -n \
