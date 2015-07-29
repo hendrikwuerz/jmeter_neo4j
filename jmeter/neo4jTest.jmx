@@ -103,7 +103,108 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Loops" enabled="false">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Loops - Small run" enabled="false">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="getWorkspaceItems_addItemsLoop" elementType="Argument">
+            <stringProp name="Argument.name">getWorkspaceItems_addItemsLoop</stringProp>
+            <stringProp name="Argument.value">3</stringProp>
+            <stringProp name="Argument.desc">Wie viele Elemente dem Workspace hinzugefügt werden sollen. Bei Änderungen den Aufruf von generateWorkspaceTest(...) anpassen</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsSetup" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsSetup</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Threads für User / Task erstellung</stringProp>
+          </elementProp>
+          <elementProp name="amountLoopsSetup" elementType="Argument">
+            <stringProp name="Argument.name">amountLoopsSetup</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Loops für User / Task erstellung</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsCoreCreateComponent" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsCoreCreateComponent</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.desc">Threads für Bug / note / pool / talk / task erstellung</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountLoopsCoreCreateComponent" elementType="Argument">
+            <stringProp name="Argument.name">amountLoopsCoreCreateComponent</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.desc">Loops für Bug / note / pool / talk / task erstellung</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsCoreGetComponent" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsCoreGetComponent</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.desc">Threads für Note / Talk / task holen - - -  note owner</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountLoopsCoreGetComponent" elementType="Argument">
+            <stringProp name="Argument.name">amountLoopsCoreGetComponent</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.desc">Loops für Note / Talk / task holen - - -  note owner</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsWorkspace" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsWorkspace</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Threads für Workspace Test</stringProp>
+          </elementProp>
+          <elementProp name="amountLoopsWorkspace" elementType="Argument">
+            <stringProp name="Argument.name">amountLoopsWorkspace</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Loops für Workspace Test</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsCoreGRUDUser" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsCoreGRUDUser</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.desc">Threads für Read - Update - Read User</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountLoopsCoreGRUDUser" elementType="Argument">
+            <stringProp name="Argument.name">amountLoopsCoreGRUDUser</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.desc">Loops für für Read - Update - Read User</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsCoreGetOwnedComponent" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsCoreGetOwnedComponent</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.desc">Threads für Get components owned by a user</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountLoopsCoreGetOwnedComponent" elementType="Argument">
+            <stringProp name="Argument.name">amountLoopsCoreGetOwnedComponent</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.desc">Loops für Get components owned by a user</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsLinkedList" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsLinkedList</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.desc">Threads für LinkedList Elemente</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountThreadsLinkedListGet" elementType="Argument">
+            <stringProp name="Argument.name">amountThreadsLinkedListGet</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.desc">Threads für LinkedList Elemente check linking</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="amountLoopsLinkedListGet" elementType="Argument">
+            <stringProp name="Argument.name">amountLoopsLinkedListGet</stringProp>
+            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.desc">Loops für LinkedList Elemente check linking</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Loops - Medium run" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="getWorkspaceItems_addItemsLoop" elementType="Argument">
             <stringProp name="Argument.name">getWorkspaceItems_addItemsLoop</stringProp>
@@ -204,7 +305,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Loops - Long run" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables: Loops - Long run" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="getWorkspaceItems_addItemsLoop" elementType="Argument">
             <stringProp name="Argument.name">getWorkspaceItems_addItemsLoop</stringProp>
