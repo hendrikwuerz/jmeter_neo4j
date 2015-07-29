@@ -1,4 +1,4 @@
-package com.poolingpeople.jmeter.result;
+package com.poolingpeople.jmeter.analyse;
 
 import java.io.File;
 import java.io.IOException;

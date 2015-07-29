@@ -1,7 +1,6 @@
-package com.poolingpeople.jmeter.result;
+package com.poolingpeople.jmeter.analyse;
 
 import java.awt.*;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;

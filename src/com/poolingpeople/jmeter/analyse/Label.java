@@ -1,4 +1,4 @@
-package com.poolingpeople.jmeter.result;
+package com.poolingpeople.jmeter.analyse;
 
 /**
  * Created by hendrik on 13.07.15.

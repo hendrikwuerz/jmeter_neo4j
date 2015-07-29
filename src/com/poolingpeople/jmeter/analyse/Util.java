@@ -1,4 +1,4 @@
-package com.poolingpeople.jmeter.result;
+package com.poolingpeople.jmeter.analyse;
 
 import java.awt.*;
 import java.io.BufferedWriter;
