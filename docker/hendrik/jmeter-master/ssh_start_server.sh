@@ -85,7 +85,7 @@ echo ""
 echo "******************************"
 echo "*** Starting JMeter Master ***"
 echo "******************************"
-./start_docker_master.sh
+./start_docker_master.sh ${REMOTE_SERVERS}
 
 
 
