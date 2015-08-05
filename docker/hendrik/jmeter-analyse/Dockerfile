@@ -7,4 +7,5 @@ ADD com/ /var/analyse/com
 VOLUME ["/logs"]
 
 ENTRYPOINT java -cp /var/analyse com.poolingpeople.jmeter.analyse.Control /logs/results_tree_success.csv /logs/split/ /logs/min/ && \
-tar -cf /logs/log.tar /logs
+tar -cf /logs/log.tar /logs && \
+tar -cf /logs/min.tar /logs/min
