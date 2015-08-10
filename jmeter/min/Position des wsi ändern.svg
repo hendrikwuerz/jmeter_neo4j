@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160mm" height="90mm" viewBox="0 0 25000 16900" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" viewport-fill="red"> 
+<rect x="0" y="0" width="100%" height="100%" fill="#dedede" stroke-width="0"/><text text-anchor="start" x="200" y="1050" font-family="Verdana" font-size="1050" fill="#000000" >Position des wsi ändern</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,11500 L 24800,11500"/>
+<text text-anchor="end" x="1250" y="11586" font-family="Verdana" font-size="346" fill="#000000" >0</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,10460 L 24800,10460"/>
+<text text-anchor="end" x="1250" y="10546" font-family="Verdana" font-size="346" fill="#000000" >5</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,9420 L 24800,9420"/>
+<text text-anchor="end" x="1250" y="9506" font-family="Verdana" font-size="346" fill="#000000" >10</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,8380 L 24800,8380"/>
+<text text-anchor="end" x="1250" y="8466" font-family="Verdana" font-size="346" fill="#000000" >15</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,7340 L 24800,7340"/>
+<text text-anchor="end" x="1250" y="7426" font-family="Verdana" font-size="346" fill="#000000" >20</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,6300 L 24800,6300"/>
+<text text-anchor="end" x="1250" y="6386" font-family="Verdana" font-size="346" fill="#000000" >25</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,5260 L 24800,5260"/>
+<text text-anchor="end" x="1250" y="5346" font-family="Verdana" font-size="346" fill="#000000" >30</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,4220 L 24800,4220"/>
+<text text-anchor="end" x="1250" y="4306" font-family="Verdana" font-size="346" fill="#000000" >35</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,3180 L 24800,3180"/>
+<text text-anchor="end" x="1250" y="3266" font-family="Verdana" font-size="346" fill="#000000" >40</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1400,2140 L 24800,2140"/>
+<text text-anchor="end" x="1250" y="2226" font-family="Verdana" font-size="346" fill="#000000" >45</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1700,1700 L 1700,12000"/>
+<text text-anchor="middle" x="1700" y="12450" font-family="Verdana" font-size="346" fill="#000000" >59:43:872</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 1700,11250 L 1700,12000"/>
+<text text-anchor="middle" x="6360" y="12450" font-family="Verdana" font-size="346" fill="#000000" >59:44:606</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 6360,11250 L 6360,12000"/>
+<text text-anchor="middle" x="11020" y="12450" font-family="Verdana" font-size="346" fill="#000000" >59:44:985</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 11020,11250 L 11020,12000"/>
+<text text-anchor="middle" x="15680" y="12450" font-family="Verdana" font-size="346" fill="#000000" >59:45:324</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 15680,11250 L 15680,12000"/>
+<text text-anchor="middle" x="20340" y="12450" font-family="Verdana" font-size="346" fill="#000000" >59:45:729</text>
+<path fill="none" stroke="#000000" stroke-width="50" stroke-linejoin="round" d="M 20340,11250 L 20340,12000"/>
+<path fill="none" stroke="#004586" stroke-width="80" stroke-linejoin="round" d="M 1700,9585 L 1828,10162 1956,9970 2085,9777 2213,9777 2341,9585 2470,10162 2598,9777 2726,8239 2855,9393 2983,9970 3111,8816 3240,10354 3368,9008 3496,9970 3625,8047 3753,8239 3881,9777 4010,8816 4138,9008 4266,7277 4395,4393 4523,9200 4651,10162 4780,9393 4908,9970 5036,8239 5165,10162 5293,1700 5421,9970 5550,9970 5678,6700 5806,9200 5935,4970 6063,7854 6191,8624 6320,5931 6448,6316 6576,5547 6705,7085 6833,6316 6961,3816 7090,7854 7218,4008 7346,8239 7475,9008 7603,5354 7731,4777 7860,7277 7988,7854 8116,6508 8245,9970 8373,6893 8501,8047 8630,10739 8758,7662 8886,10931 9015,8239 9143,10547 9271,5162 9400,11316 9528,6893 9656,10354 9785,11316 9913,7277 10041,9970 10170,9585 10298,5739 10426,10931 10555,10931 10683,10354 10811,10162 10940,9585 11068,10162 11196,10354 11325,9970 11453,11316 11581,10739 11710,9393 11838,10162 11966,10162 12095,11316 12223,10547 12351,10354 12480,10931 12608,8816 12736,8431 12865,9585 12993,10547 13121,9970 13250,10354 13378,8816 13506,10547 13635,10739 13763,11316 13891,10162 14020,10931 14148,10547 14276,10547 14405,10547 14533,9393 14661,8816 14790,9393 14918,9970 15046,10739 15175,10354 15303,10931 15431,10162 15560,11124 15688,9777 15816,10931 15945,11316 16073,11124 16201,10739 16330,10547 16458,11124 16586,11316 16715,9970 16843,11316 16971,11316 17100,10547 17228,9008 17356,10547 17485,10162 17613,11124 17741,11124 17870,11316 17998,9393 18126,11124 18255,11316 18383,10739 18511,11124 18640,11124 18768,11124 18896,11124 19025,9008 19153,11124 19281,10547 19410,11124 19538,11124 19666,11316 19795,11124 19923,9970 20051,11316 20180,11124 20308,11316 20436,10547 20565,11124 20693,11316 20821,10547 20950,11124 21078,11316 21206,10931 21335,11124 21463,11316 21591,10547 21720,11124 21848,11124 21976,11316 22105,10931 22233,10547 22361,11124 22490,10931 22618,11316 22746,11316 22875,11124 23003,10931 23131,11124 23260,10739 23388,11316 23516,11316 23645,11316 23773,11316 23901,11124 24030,11124 24158,11124 24286,11316 24415,11316 24543,11124 24671,11124"/>
+<text text-anchor="start" x="200" y="13400" font-family="Verdana" font-size="500" fill="#000000" >Original Requests</text>
+<text text-anchor="start" x="200" y="13900" font-family="Verdana" font-size="500" fill="#000000" >Requests</text>
+<text text-anchor="start" x="200" y="14400" font-family="Verdana" font-size="500" fill="#000000" >Average</text>
+<text text-anchor="start" x="200" y="14900" font-family="Verdana" font-size="500" fill="#000000" >Minimal</text>
+<text text-anchor="start" x="200" y="15400" font-family="Verdana" font-size="500" fill="#000000" >Maximal</text>
+<text text-anchor="start" x="200" y="15900" font-family="Verdana" font-size="500" fill="#000000" >Median</text>
+<text text-anchor="start" x="200" y="16400" font-family="Verdana" font-size="500" fill="#000000" >90% line</text>
+<text text-anchor="start" x="5200" y="13400" font-family="Verdana" font-size="500" fill="#000000" >180</text>
+<text text-anchor="start" x="5200" y="13900" font-family="Verdana" font-size="500" fill="#000000" >180</text>
+<text text-anchor="start" x="5200" y="14400" font-family="Verdana" font-size="500" fill="#000000" >10ms</text>
+<text text-anchor="start" x="5200" y="14900" font-family="Verdana" font-size="500" fill="#000000" >2ms</text>
+<text text-anchor="start" x="5200" y="15400" font-family="Verdana" font-size="500" fill="#000000" >52ms</text>
+<text text-anchor="start" x="5200" y="15900" font-family="Verdana" font-size="500" fill="#000000" >7ms</text>
+<text text-anchor="start" x="5200" y="16400" font-family="Verdana" font-size="500" fill="#000000" >24ms</text>
+<text text-anchor="start" x="11200" y="13400" font-family="Verdana" font-size="500" fill="#000000" >Start timestamp</text>
+<text text-anchor="start" x="11200" y="13900" font-family="Verdana" font-size="500" fill="#000000" >End timestamp</text>
+<text text-anchor="start" x="11200" y="14400" font-family="Verdana" font-size="500" fill="#000000" >Run time</text>
+<text text-anchor="start" x="16200" y="13400" font-family="Verdana" font-size="500" fill="#000000" >Wed Aug 05 11:59:43 UTC 2015</text>
+<text text-anchor="start" x="16200" y="13900" font-family="Verdana" font-size="500" fill="#000000" >Wed Aug 05 11:59:46 UTC 2015</text>
+<text text-anchor="start" x="16200" y="14400" font-family="Verdana" font-size="500" fill="#000000" >00:00:02</text>
+<text text-anchor="start" x="16200" y="14900" font-family="Verdana" font-size="500" fill="#000000" >(hh:mm:ss)</text>
+</svg>

@@ -1,0 +1,120 @@
+1438775983725,13,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,13,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983732,8,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,8,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983738,10,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,10,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983741,8,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,8,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983743,10,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,10,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983748,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983749,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,3,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983750,8,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,8,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983752,4,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,4,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983753,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983754,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983755,4,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,4,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983757,6,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,6,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983758,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983759,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983760,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983762,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,541,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,3,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983764,10,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,10,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983764,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,541,3,3,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983765,7,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,541,1,1,http://172.31.8.205:27474/db/data/transaction/commit,,7,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983772,6,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,6,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983772,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,541,1,1,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,985aa859d74d,0
+
+1438775983775,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983777,6,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,6,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983779,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983783,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983784,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983785,10,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,10,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983787,19,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,19,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983788,7,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,7,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983789,11,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,11,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983798,4,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,4,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983800,8,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,532,3,3,http://172.31.8.205:27474/db/data/transaction/commit,,8,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983802,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,532,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983806,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,532,3,3,http://172.31.8.205:27474/db/data/transaction/commit,,3,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983808,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,532,3,3,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983809,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,532,2,2,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983810,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,532,2,2,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983812,6,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,532,2,2,http://172.31.8.205:27474/db/data/transaction/commit,,6,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983818,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,532,1,1,http://172.31.8.205:27474/db/data/transaction/commit,,3,ISO-8859-1,1,0,12ae572e559d,0
+
+1438775983886,11,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,11,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983896,7,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,7,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983897,4,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,4,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983902,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983903,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983904,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983907,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,5,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983908,2,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,2,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983909,5,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,4,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983909,6,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,6,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983910,11,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,11,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983914,12,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-1,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,12,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983915,11,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,11,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983921,4,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,4,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983922,6,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-2,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,6,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983925,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,544,4,4,http://172.31.8.205:27474/db/data/transaction/commit,,3,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983927,6,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,544,2,2,http://172.31.8.205:27474/db/data/transaction/commit,,6,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983928,7,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-3,text,true,,544,2,2,http://172.31.8.205:27474/db/data/transaction/commit,,7,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983933,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,544,2,2,http://172.31.8.205:27474/db/data/transaction/commit,,3,ISO-8859-1,1,0,99214e63c6ae,0
+
+1438775983936,3,Get note owner,200,OK,Thread Group: Core: TestGetOwnerComponent 6-4,text,true,,544,1,1,http://172.31.8.205:27474/db/data/transaction/commit,,3,ISO-8859-1,1,0,99214e63c6ae,0
+
