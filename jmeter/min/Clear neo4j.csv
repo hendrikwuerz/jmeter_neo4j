@@ -1,6 +1,0 @@
-1438775978875,227,Clear neo4j,200,OK,setUp Thread Group: clean and prepare DB 1-1,text,true,,222,1,1,http://172.31.8.205:27474/db/data/transaction/commit,,227,ISO-8859-1,1,0,99214e63c6ae,0
-
-1438775979092,136,Clear neo4j,200,OK,setUp Thread Group: clean and prepare DB 1-1,text,true,,222,1,1,http://172.31.8.205:27474/db/data/transaction/commit,,136,ISO-8859-1,1,0,12ae572e559d,0
-
-1438775979218,163,Clear neo4j,200,OK,setUp Thread Group: clean and prepare DB 1-1,text,true,,222,1,1,http://172.31.8.205:27474/db/data/transaction/commit,,162,ISO-8859-1,1,0,985aa859d74d,0
-
