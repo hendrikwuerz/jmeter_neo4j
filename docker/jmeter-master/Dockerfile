@@ -1,4 +1,4 @@
-FROM hendrik/jmeter-base
+FROM poolingpeople/jmeter-base
 
 # Create mount point for script, data and log files
 VOLUME ["/scripts"]

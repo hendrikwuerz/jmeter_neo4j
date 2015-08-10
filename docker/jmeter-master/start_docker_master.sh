@@ -2,9 +2,9 @@ docker run \
 -p 60000:60000 \
 -p 1099:1099 \
 -p 4445:4445 \
--v /home/hendrik/jmeter:/scripts \
--v /home/hendrik/jmeter/logs:/logs \
-hendrik/jmeter-master \
+-v ${JMETER_HOME}/jmeter:/scripts \
+-v ${JMETER_HOME}/jmeter/logs:/logs \
+poolingpeople/jmeter-master \
 -n \
 -t /scripts/neo4jTest.jmx \
 -l /logs/jtl.jtl \

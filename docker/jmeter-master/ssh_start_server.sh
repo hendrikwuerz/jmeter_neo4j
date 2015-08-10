@@ -2,8 +2,8 @@
 
 
 USERNAME=hendrik
-SCRIPT_START="/home/hendrik/docker-jmeter/hendrik/jmeter-server/start_docker_server.sh"
-SCRIPT_STOP="/home/hendrik/docker-jmeter/hendrik/jmeter-server/stop_docker_server.sh"
+SCRIPT_START="${JMETER_HOME}/jmeter-server/start_docker_server.sh"
+SCRIPT_STOP="${JMETER_HOME}/jmeter-server/stop_docker_server.sh"
 
 
 # get passed parameter

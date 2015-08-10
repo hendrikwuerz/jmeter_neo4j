@@ -1,4 +1,4 @@
-FROM hendrik/jmeter-base
+FROM poolingpeople/jmeter-base
 
 ADD jmeter.properties /var/lib/apache-jmeter-$JMETER_VERSION/bin/
 
