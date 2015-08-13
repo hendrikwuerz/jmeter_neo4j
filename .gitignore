@@ -6,4 +6,5 @@ JMeterNeo4jData.iml
 jmeter/data*
 jmeter/logs*
 docker/jmeter-master/jmeter_master_to_server
+docker/jmeter-master/deployer_jmeter.pub
 docker/jmeter-server/jmeter_master_to_server.pub
