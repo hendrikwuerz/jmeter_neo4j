@@ -9,7 +9,7 @@ then
 fi
 
 # start the run
-./ssh_start_server.sh -k jmeter_master_to_server -d /home/hendrik/jmeter/data -t /home/hendrik/jmeter/neo4jTest.jmx  -R $remote
+./ssh_start_server.sh -k jmeter_master_to_server -d ${JMETER_HOME}/jmeter/data -t ${JMETER_HOME}/jmeter/test.jmx  -R $remote
 
 # start the analyse
 cd ../jmeter-analyse
