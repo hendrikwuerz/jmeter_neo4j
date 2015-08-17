@@ -8,6 +8,8 @@ then
   remote=$1
 fi
 
+cd $(dirname $0)
+
 # start the run
 ./ssh_start_server.sh -k jmeter_master_to_server -d ${JMETER_HOME}/jmeter/data -t ${JMETER_HOME}/jmeter/test.jmx  -R $remote
 
