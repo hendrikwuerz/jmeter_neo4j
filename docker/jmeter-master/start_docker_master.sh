@@ -6,7 +6,7 @@ docker run \
 -v ${JMETER_HOME}/jmeter/logs:/logs \
 poolingpeople/jmeter-master \
 -n \
--t /scripts/neo4jTest.jmx \
+-t /scripts/test.jmx \
 -l /logs/jtl.jtl \
 -R$1 \
 -Djava.rmi.server.hostname=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1) \

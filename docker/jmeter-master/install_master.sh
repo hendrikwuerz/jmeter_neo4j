@@ -11,4 +11,5 @@ docker build -t poolingpeople/jmeter-base .
 cd jmeter-master
 chmod +x *.sh
 chmod 600 jmeter_master_to_server
+cat ./deployer_jmeter.pub >> ~/.ssh/authorized_keys
 docker build -t poolingpeople/jmeter-master .

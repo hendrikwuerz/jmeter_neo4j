@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-USERNAME=hendrik
-SCRIPT_START="${JMETER_HOME}/jmeter-server/start_docker_server.sh"
-SCRIPT_STOP="${JMETER_HOME}/jmeter-server/stop_docker_server.sh"
+USERNAME=jmeter
+SCRIPT_START="${JMETER_HOME}/docker/jmeter-server/start_docker_server.sh"
+SCRIPT_STOP="${JMETER_HOME}/docker/jmeter-server/stop_docker_server.sh"
 
 
 # get passed parameter
@@ -37,7 +37,8 @@ echo "*******************************"
 echo "*** Delete old result files ***"
 echo "*******************************"
 # see start_docker_master.sh There this log folder is mapped to the docker container
-sudo rm /home/hendrik/jmeter/logs/*
+#sudo rm ${JMETER_HOME}/jmeter/logs/*
+rm -r -f ${JMETER_HOME}/jmeter/logs/*
 
 
 
